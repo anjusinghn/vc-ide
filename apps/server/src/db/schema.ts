@@ -1,0 +1,57 @@
+export const schemaStatements = [
+  `CREATE TABLE IF NOT EXISTS companies (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    sector TEXT,
+    stage TEXT,
+    geography TEXT,
+    website TEXT,
+    description TEXT,
+    foundedDate TEXT,
+    employeeCount INTEGER,
+    fundingTotal REAL,
+    createdAt TEXT NOT NULL,
+    updatedAt TEXT NOT NULL
+  )`,
+  `CREATE TABLE IF NOT EXISTS funds (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    vintageYear INTEGER,
+    targetSize REAL,
+    strategy TEXT,
+    createdAt TEXT NOT NULL
+  )`,
+  `CREATE TABLE IF NOT EXISTS theses (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    fundId TEXT,
+    sectors TEXT NOT NULL,
+    stages TEXT NOT NULL,
+    geographies TEXT NOT NULL,
+    ownershipTargetMin REAL,
+    ownershipTargetMax REAL,
+    preferredFounderPatterns TEXT NOT NULL,
+    antiPatterns TEXT NOT NULL,
+    diligenceQuestions TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1,
+    createdAt TEXT NOT NULL,
+    updatedAt TEXT NOT NULL,
+    FOREIGN KEY (fundId) REFERENCES funds(id)
+  )`,
+  `CREATE TABLE IF NOT EXISTS deals (
+    id TEXT PRIMARY KEY,
+    companyId TEXT NOT NULL,
+    fundId TEXT,
+    stage TEXT NOT NULL,
+    confidence INTEGER,
+    leadPartner TEXT,
+    source TEXT,
+    thesisId TEXT,
+    createdAt TEXT NOT NULL,
+    updatedAt TEXT NOT NULL,
+    lastActivityAt TEXT NOT NULL,
+    FOREIGN KEY (companyId) REFERENCES companies(id),
+    FOREIGN KEY (fundId) REFERENCES funds(id),
+    FOREIGN KEY (thesisId) REFERENCES theses(id)
+  )`,
+  `CREATE TABLE IF NOT EXISTS people (
