@@ -27,3 +27,31 @@ export default function CTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="flex flex-col sm:flex-row items-center gap-4 mb-6"
+        >
+          <motion.button
+            type="button"
+            className="bg-foreground text-background rounded-full px-8 py-3.5 text-base font-medium cursor-pointer hover:opacity-90 transition focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Request Early Access
+          </motion.button>
+          <a
+            href="#how-it-works"
+            className="border border-border rounded-full px-8 py-3.5 text-base font-medium cursor-pointer hover:bg-white/5 transition focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            See How It Works
+          </a>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-sm text-muted-foreground"
+        >
+          Currently onboarding seed and Series A firms.
+        </motion.p>
+      </motion.div>
+    </section>
+  );
+}
