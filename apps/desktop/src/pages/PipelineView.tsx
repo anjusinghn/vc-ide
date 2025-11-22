@@ -58,3 +58,63 @@ export function PipelineView() {
   const grouped = groupDealsByStage(filteredDeals);
 
   return (
+    <div className="list-stack">
+      <section className="data-card">
+        <p className="text-xs font-mono text-muted-foreground mb-3">
+          {stageOrder.slice(0, 5).map((stage, i) => (
+            <span key={stage}>
+              {i > 0 && <span className="mx-2 opacity-30">·</span>}
+              <span className="text-foreground">{stageLabel(stage)}</span>
+              {" "}<span className="tabular-nums">{summary.data?.[stage] ?? 0}</span>
+            </span>
+          ))}
+        </p>
+
+        <div className="toolbar">
+          <div className="toolbar-field">
+            <div className="flex rounded border border-border overflow-hidden">
+              <button
+                className={`px-2.5 py-0.5 text-[11px] transition-colors ${viewMode === "table" ? "bg-card text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                onClick={() => setViewMode("table")}
+                type="button"
+              >
+                Table
+              </button>
+              <button
+                className={`px-2.5 py-0.5 text-[11px] border-l border-border transition-colors ${viewMode === "kanban" ? "bg-card text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                onClick={() => setViewMode("kanban")}
+                type="button"
+              >
+                Kanban
+              </button>
+            </div>
+          </div>
+          <div className="toolbar-field">
+            <label htmlFor="stage-filter">Stage</label>
+            <select
+              className="select"
+              id="stage-filter"
+              onChange={(event) => setStageFilter(event.target.value as DealStage | "all")}
+              value={stageFilter}
+            >
+              <option value="all">All stages</option>
+              {stageOrder.map((stage) => (
+                <option key={stage} value={stage}>
+                  {stage}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="toolbar-field">
+            <label htmlFor="sort-by">Sort</label>
+            <select
+              className="select"
+              id="sort-by"
+              onChange={(event) => setSortBy(event.target.value as SortMode)}
+              value={sortBy}
+            >
+              <option value="activity">Last activity</option>
+              <option value="confidence">Confidence</option>
+              <option value="name">Company name</option>
+            </select>
+          </div>
