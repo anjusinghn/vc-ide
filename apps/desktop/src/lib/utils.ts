@@ -48,3 +48,53 @@ export function formatRelativeDate(dateString?: string | null) {
 export function formatCurrency(value?: number | null) {
   if (value == null) {
     return "—";
+  }
+
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    notation: value >= 1_000_000 ? "compact" : "standard",
+    maximumFractionDigits: 1,
+  }).format(value);
+}
+
+export function confidenceLabel(value?: number | null) {
+  if (value == null) {
+    return "Unscored";
+  }
+
+  if (value >= 80) {
+    return "High";
+  }
+
+  if (value >= 60) {
+    return "Medium";
+  }
+
+  return "Low";
+}
+
+export function stageLabel(stage: DealStage) {
+  return stage
+    .split("_")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+export function groupDealsByStage(deals: DealWithCompany[]) {
+  return stageOrder.reduce<Record<DealStage, DealWithCompany[]>>(
+    (groups, stage) => {
+      groups[stage] = deals.filter((deal) => deal.stage === stage);
+      return groups;
+    },
+    {
+      sourced: [],
+      first_call: [],
+      diligence: [],
+      ic: [],
+      term_sheet: [],
+      closed: [],
+      passed: [],
+    },
+  );
+}
