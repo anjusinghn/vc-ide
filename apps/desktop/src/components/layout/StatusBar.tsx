@@ -24,3 +24,28 @@ export function StatusBar() {
       </div>
       <div className="status-cluster">
         <span>{pipeline.deals.data?.length ?? 0} deals</span>
+      </div>
+      <div className="status-cluster">
+        <span>{dueTasks.length} due</span>
+      </div>
+      <div className="status-cluster">
+        <span className="muted">⌘K</span>
+        <button
+          className="small-action"
+          onClick={() =>
+            openTab({
+              id: "settings",
+              title: "Settings",
+              kind: "settings",
+              section: "pipeline",
+            })
+          }
+          type="button"
+          aria-label="Settings"
+        >
+          <Settings size={12} />
+        </button>
+      </div>
+    </footer>
+  );
+}
