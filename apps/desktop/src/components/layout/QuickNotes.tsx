@@ -43,3 +43,48 @@ export function QuickNotes() {
     if (draft === lastSavedValue) {
       return;
     }
+
+    setStatus("Saving…");
+    const timeout = window.setTimeout(async () => {
+      const payload: CreateMemoInput = {
+        author: "Neuralyn",
+        content: draft,
+        memoType: "scratch",
+        status: "draft",
+        title: "Quick Notes",
+      };
+
+      try {
+        if (scratchMemo) {
+          await updateMemo.mutateAsync(payload);
+        } else {
+          await createMemo.mutateAsync(payload);
+        }
+        setLastSavedValue(draft);
+        setStatus("Saved just now");
+      } catch (error) {
+        setStatus(error instanceof Error ? error.message : "Save failed");
+      }
+    }, 1_000);
+
+    return () => window.clearTimeout(timeout);
+  }, [createMemo, draft, lastSavedValue, scratchMemo, updateMemo]);
+
+  if (memos.isLoading) {
+    return (
+      <div className="flex flex-col gap-2 p-4">
+        <div className="skeleton h-5 rounded" />
+        <div className="skeleton h-5 rounded w-4/5" />
+        <div className="skeleton h-5 rounded w-3/5" />
+      </div>
+    );
+  }
+
+  return (
+    <section style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <div
+        className="split-inline"
+        style={{
+          borderBottom: "1px solid var(--border)",
+          padding: "10px 12px",
+        }}
