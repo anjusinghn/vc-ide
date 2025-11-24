@@ -38,3 +38,43 @@ export function CompanyBrief({ dealId }: { dealId?: string }) {
   return (
     <div className="flex flex-col gap-3 p-4">
       <CompanyCard company={deal.company} thesis={deal.thesis} />
+      <section className="data-card">
+        <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground mb-2">
+          Team
+        </p>
+        <div className="list-stack mt-3">
+          {deal.people.map((person) => (
+            <div className="list-item" key={person.id}>
+              <div className="split-inline">
+                <strong>{person.name}</strong>
+                <span className="badge">{person.role ?? "Contact"}</span>
+              </div>
+              <p className="text-[11px] text-muted-foreground">{person.email ?? "No email captured"}</p>
+            </div>
+          ))}
+          {deal.people.length === 0 ? (
+            <p className="text-xs text-muted-foreground py-3 text-center">No team contacts linked yet.</p>
+          ) : null}
+        </div>
+      </section>
+      <section className="data-card">
+        <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground mb-2">
+          Recent Activity
+        </p>
+        <div className="list-stack mt-3">
+          {deal.activity.slice(0, 6).map((entry) => (
+            <div className="list-item" key={`${entry.entityType}:${entry.entityId}:${entry.timestamp}`}>
+              <div className="split-inline">
+                <strong>{entry.entityName}</strong>
+                <span className="muted">{formatRelativeDate(entry.timestamp)}</span>
+              </div>
+              <div className="muted">
+                {entry.entityType} {entry.action}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
