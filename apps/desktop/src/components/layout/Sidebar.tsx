@@ -54,3 +54,59 @@ function openRecentTab(
       section: "theses",
       payload: { thesisId: entityId },
     });
+    return;
+  }
+
+  if (item.kind === "person") {
+    openTab({
+      id: item.id,
+      title: item.title,
+      kind: "person",
+      section: "people",
+      payload: { personId: entityId },
+    });
+    return;
+  }
+
+  if (item.kind === "meeting") {
+    openTab({
+      id: item.id,
+      title: item.title,
+      kind: "meeting",
+      section: "meetings",
+      payload: { meetingId: entityId },
+    });
+    return;
+  }
+
+  openTab({
+    id: item.id,
+    title: item.title,
+    kind: item.kind,
+    section: "deals",
+    payload: { dealId: entityId },
+  });
+}
+
+export function Sidebar() {
+  const { activeSection, openTab, toggleSidebar } = useLayout();
+  const { addRecentItem, recentItems } = useWorkspace();
+  const pipeline = usePipeline();
+  const thesesQuery = useTheses();
+  const peopleQuery = usePeople();
+  const meetingsQuery = useMeetings();
+
+  const featuredDeal = pipeline.deals.data?.[0];
+  const featuredThesis = thesesQuery.data?.find((thesis) => thesis.active) ?? thesesQuery.data?.[0];
+  const featuredPerson = peopleQuery.data?.[0];
+  const featuredMeeting = meetingsQuery.data?.[0];
+
+  const liveDeals = (pipeline.deals.data ?? []).slice(0, 4);
+  const activeTheses = (thesesQuery.data ?? []).filter((thesis) => thesis.active).slice(0, 3);
+
+  return (
+    <aside className="sidebar-card">
+      <div className="sidebar-header">
+        <div>
+          <div className="text-[10px] tracking-[0.06em] uppercase text-muted-foreground">
+            Investor IDE
