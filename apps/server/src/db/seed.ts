@@ -64,3 +64,68 @@ export function seedIfEmpty() {
       id: createId(),
       name: "Delta Security",
       sector: "Cybersecurity",
+      stage: "Series A",
+      geography: "Boston, MA",
+      website: "https://delta.example",
+      description: "Runtime identity graph for cloud-native security teams.",
+      foundedDate: "2020-06-28",
+      employeeCount: 41,
+      fundingTotal: 16_800_000,
+    },
+    {
+      id: createId(),
+      name: "Echo Analytics",
+      sector: "Vertical SaaS",
+      stage: "Seed",
+      geography: "Seattle, WA",
+      website: "https://echo.example",
+      description: "Revenue intelligence platform for specialty healthcare clinics.",
+      foundedDate: "2022-11-18",
+      employeeCount: 23,
+      fundingTotal: 6_100_000,
+    },
+  ];
+
+  const thesis = {
+    id: thesisId,
+    name: "AI Infrastructure - Seed",
+    fundId,
+    sectors: JSON.stringify(["AI", "Infrastructure"]),
+    stages: JSON.stringify(["pre_seed", "seed"]),
+    geographies: JSON.stringify(["US", "Europe"]),
+    ownershipTargetMin: 0.08,
+    ownershipTargetMax: 0.15,
+    preferredFounderPatterns: JSON.stringify([
+      "technical founders with infra depth",
+      "repeat builders from data tooling teams",
+    ]),
+    antiPatterns: JSON.stringify([
+      "services-heavy gross margin profile",
+      "single-customer concentration risk",
+    ]),
+    diligenceQuestions: JSON.stringify([
+      "What is the deployment footprint at $1M ARR?",
+      "How sticky is the workflow after initial integration?",
+      "What moat compounds with usage density?",
+    ]),
+    active: 1,
+    createdAt: daysAgo(20),
+    updatedAt: daysAgo(2),
+  };
+
+  const deals = [
+    {
+      id: createId(),
+      companyId: companies[0].id,
+      fundId,
+      stage: "diligence",
+      confidence: 83,
+      leadPartner: "Nadia Park",
+      source: "Warm intro from angel syndicate",
+      thesisId,
+      createdAt: daysAgo(12),
+      updatedAt: daysAgo(1),
+      lastActivityAt: daysAgo(1),
+    },
+    {
+      id: createId(),
