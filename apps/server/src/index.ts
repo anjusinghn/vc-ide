@@ -33,3 +33,37 @@ app.use((req, res, next) => {
 app.use(
   cors({
     origin: ["http://localhost:1420", "http://localhost:5173"],
+  }),
+);
+app.use(express.json());
+
+app.get("/api/health", (_req, res) => {
+  res.json({ status: "ok" });
+});
+
+app.use("/api", companiesRouter);
+app.use("/api", dealsRouter);
+app.use("/api", peopleRouter);
+app.use("/api", meetingsRouter);
+app.use("/api", memosRouter);
+app.use("/api", thesesRouter);
+app.use("/api", tasksRouter);
+app.use("/api", fundsRouter);
+app.use("/api", pipelineRouter);
+app.use("/api", searchRouter);
+app.use("/api", activityRouter);
+app.use("/api", settingsRouter);
+
+app.use((error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+  console.error(error);
+  res.status(500).json({
+    error: error instanceof Error ? error.message : "Unknown server error",
+  });
+});
+
+migrate();
+seedIfEmpty();
+
+app.listen(PORT, () => {
+  console.log(`Neuralyn API running on :${PORT}`);
+});
