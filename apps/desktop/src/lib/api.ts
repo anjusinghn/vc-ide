@@ -55,3 +55,59 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 export const queryKeys = {
   companies: ["companies"] as const,
   company: (id: string) => ["companies", id] as const,
+  deals: ["deals"] as const,
+  deal: (id: string) => ["deals", id] as const,
+  dealFull: (id: string) => ["deals", id, "full"] as const,
+  people: ["people"] as const,
+  person: (id: string) => ["people", id] as const,
+  meetings: ["meetings"] as const,
+  meeting: (id: string) => ["meetings", id] as const,
+  memos: ["memos"] as const,
+  memo: (id: string) => ["memos", id] as const,
+  theses: ["theses"] as const,
+  thesis: (id: string) => ["theses", id] as const,
+  tasks: ["tasks"] as const,
+  task: (id: string) => ["tasks", id] as const,
+  funds: ["funds"] as const,
+  fund: (id: string) => ["funds", id] as const,
+  pipelineDeals: ["pipeline", "deals"] as const,
+  pipelineSummary: ["pipeline", "summary"] as const,
+  search: (query: string) => ["search", query] as const,
+  activity: (limit: number) => ["activity", limit] as const,
+  settings: ["settings"] as const,
+};
+
+export const api = {
+  companies: {
+    list: () => request<Company[]>("/companies"),
+    get: (id: string) => request<Company>(`/companies/${id}`),
+    create: (data: CreateCompanyInput) =>
+      request<Company>("/companies", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    update: (id: string, data: UpdateCompanyInput) =>
+      request<Company>(`/companies/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(data),
+      }),
+    delete: (id: string) =>
+      request<void>(`/companies/${id}`, {
+        method: "DELETE",
+      }),
+  },
+  deals: {
+    list: () => request<Deal[]>("/deals"),
+    get: (id: string) => request<Deal>(`/deals/${id}`),
+    full: (id: string) => request<DealFull>(`/deals/${id}/full`),
+    create: (data: CreateDealInput) =>
+      request<Deal>("/deals", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    update: (id: string, data: UpdateDealInput) =>
+      request<Deal>(`/deals/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(data),
+      }),
+    delete: (id: string) =>
