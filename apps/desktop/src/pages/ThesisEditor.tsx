@@ -31,3 +31,36 @@ export function ThesisEditor({ thesisId }: { thesisId?: string }) {
     <div className="list-stack">
       <section className="data-card">
         <div className="split-inline">
+          <div>
+            <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
+              Thesis Editor
+            </p>
+            <p className="text-sm font-medium mt-0.5">{thesis.name}</p>
+          </div>
+          <span
+            className={`text-[10px] font-medium px-1.5 py-0.5 rounded border ${
+              thesis.active
+                ? "text-accent border-accent/30"
+                : "text-muted-foreground border-border"
+            }`}
+          >
+            {thesis.active ? "Active" : "Inactive"}
+          </span>
+        </div>
+      </section>
+      <section className="data-card">
+        <ThesisForm
+          onSave={async (payload) => {
+            await updateThesis.mutateAsync(payload);
+            addRecentItem({
+              id: `thesis:${thesis.id}`,
+              title: thesis.name,
+              kind: "thesis",
+            });
+          }}
+          thesis={thesis}
+        />
+      </section>
+    </div>
+  );
+}
