@@ -37,3 +37,41 @@ export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
     try {
       return JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? "{}").recentItems ?? [];
     } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        activeFund,
+        recentItems,
+      }),
+    );
+  }, [activeFund, recentItems]);
+
+  const value = useMemo<WorkspaceContextValue>(
+    () => ({
+      activeFund,
+      recentItems,
+      addRecentItem: (item) => {
+        setRecentItems((current) => [item, ...current.filter((entry) => entry.id !== item.id)].slice(0, 10));
+      },
+      setActiveFund: setActiveFundState,
+    }),
+    [activeFund, recentItems],
+  );
+
+  return <WorkspaceContext.Provider value={value}>{children}</WorkspaceContext.Provider>;
+}
+
+export function useWorkspace() {
+  const context = useContext(WorkspaceContext);
+
+  if (!context) {
+    throw new Error("useWorkspace must be used inside WorkspaceProvider");
+  }
+
+  return context;
+}
