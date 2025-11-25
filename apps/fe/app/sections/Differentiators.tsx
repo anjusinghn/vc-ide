@@ -53,3 +53,57 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.06 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+export default function Differentiators() {
+  return (
+    <section id="differentiators" className="py-24 md:py-32 px-8 md:px-28">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-3xl md:text-4xl font-medium tracking-[-1.5px] mb-4">
+          The moat is not the{" "}
+          <span className="font-serif italic font-normal">model</span>.
+        </h2>
+        <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+          It&apos;s not the UI. It&apos;s not the chat. It&apos;s what
+          accumulates over time.
+        </p>
+      </motion.div>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto"
+      >
+        {differentiators.map((item) => (
+          <motion.div
+            key={item.title}
+            variants={itemVariants}
+            className="border border-border rounded-2xl p-6 flex flex-col gap-3 hover:border-white/15 transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <item.icon size={20} className="text-muted-foreground" />
+              <h3 className="text-base font-semibold">{item.title}</h3>
+            </div>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {item.description}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
+    </section>
+  );
+}
