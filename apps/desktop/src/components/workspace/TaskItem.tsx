@@ -37,3 +37,42 @@ export function TaskItem({
             {task.description ? (
               <span className="text-[11px] text-muted-foreground leading-relaxed block mt-0.5">
                 {task.description}
+              </span>
+            ) : null}
+          </div>
+        </label>
+
+        <div className="action-row self-start">
+          <button
+            className="small-action"
+            disabled={isUpdating}
+            onClick={() => onCancel(task)}
+            type="button"
+          >
+            <CircleSlash2 size={12} />
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <div className="split-inline gap-3">
+        <div className="action-row muted flex-wrap text-[11px]">
+          <span className="inline-flex items-center gap-1">
+            <CalendarClock size={12} />
+            <span className={cn("text-[11px]", pastDue && "text-[oklch(0.82_0.12_27)]")}>
+              {formatDueDate(task.dueDate)}
+            </span>
+          </span>
+          {task.assignee ? <span>Owner: {task.assignee}</span> : null}
+        </div>
+
+        {deal ? (
+          <button className="small-action" onClick={() => onOpenDeal(deal.id)} type="button">
+            <ExternalLink size={12} />
+            {deal.company.name}
+          </button>
+        ) : null}
+      </div>
+    </div>
+  );
+}
