@@ -27,3 +27,32 @@ export function PersonView({ personId }: { personId?: string }) {
         <div className="skeleton h-4 rounded w-2/5" />
         <div className="skeleton h-4 rounded w-full" />
         <div className="skeleton h-4 rounded w-4/5" />
+        <div className="skeleton h-4 rounded w-3/5" />
+      </div>
+    );
+  }
+
+  if (!person) {
+    return (
+      <p className="flex items-center justify-center h-full text-xs text-muted-foreground">
+        No people records available.
+      </p>
+    );
+  }
+
+  return (
+    <div className="list-stack">
+      <PersonCard person={person} />
+      <section className="data-card">
+        <div className="muted">Connections</div>
+        <p className="text-xs mt-2">
+          {person.name} is currently tagged as {person.tags.join(", ") || "unclassified"} with a relationship score of{" "}
+          {person.relationshipScore ?? "—"}.
+        </p>
+        <p className="text-xs text-muted-foreground mt-2">
+          Use the command palette to jump between people and the associated company or deal context.
+        </p>
+      </section>
+    </div>
+  );
+}
