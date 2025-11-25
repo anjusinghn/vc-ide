@@ -18,3 +18,23 @@ function AppContent() {
   return (
     <TooltipProvider>
       <MainLayout />
+      <CommandPalette />
+    </TooltipProvider>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="dark h-full">
+      <QueryClientProvider client={queryClient}>
+        <ErrorBoundary>
+          <WorkspaceProvider>
+            <LayoutProvider>
+              <AppContent />
+            </LayoutProvider>
+          </WorkspaceProvider>
+        </ErrorBoundary>
+      </QueryClientProvider>
+    </div>
+  );
+}
