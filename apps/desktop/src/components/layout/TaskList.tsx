@@ -41,3 +41,46 @@ export function TaskList() {
       <div className="flex flex-col gap-2 p-4">
         <div className="skeleton h-5 rounded" />
         <div className="skeleton h-5 rounded w-4/5" />
+        <div className="skeleton h-5 rounded w-3/5" />
+        <div className="skeleton h-5 rounded w-4/5" />
+      </div>
+    );
+  }
+
+  const updateTaskStatus = async (taskId: string, payload: UpdateTaskInput) => {
+    setUpdatingTaskId(taskId);
+
+    try {
+      await updateTask.mutateAsync({ payload, taskId });
+    } finally {
+      setUpdatingTaskId(undefined);
+    }
+  };
+
+  return (
+    <>
+      <section style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+        <div
+          className="split-inline"
+          style={{
+            borderBottom: "1px solid var(--border)",
+            padding: "10px 12px",
+          }}
+        >
+          <div style={{ display: "grid", gap: 2 }}>
+            <strong style={{ fontSize: 12 }}>Open Tasks</strong>
+            <span className="muted" style={{ fontSize: 11 }}>
+              Sorted by due date
+            </span>
+          </div>
+          <button className="small-action active" onClick={() => setFormOpen(true)} type="button">
+            <PlusSquare size={12} />
+            New Task
+          </button>
+        </div>
+
+        {openTasks.length === 0 ? (
+          <EmptyState
+            actionLabel="Create task"
+            description="Tasks created here stay visible in the bottom panel and roll into activity automatically."
+            icon={CheckSquare}
