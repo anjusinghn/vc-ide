@@ -25,3 +25,29 @@ yarn-debug.log*
 pnpm-debug.log*
 
 # vercel
+.vercel
+
+# pnpm
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# coverage
+coverage
+
+# rust
+target/
+
+# database
+*.db
+*.db-shm
+*.db-wal
+
+# AI tooling
+.codex
+.omx/
+.sisyphus/
