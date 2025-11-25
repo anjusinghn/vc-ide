@@ -20,3 +20,25 @@ export function useTask(id?: string) {
 
 export function useCreateTask() {
   const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: CreateTaskInput) => api.tasks.create(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks });
+      queryClient.invalidateQueries({ queryKey: queryKeys.deals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
+
+export function useUpdateTask(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: UpdateTaskInput) => api.tasks.update(id, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks });
+      queryClient.invalidateQueries({ queryKey: queryKeys.task(id) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.deals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}

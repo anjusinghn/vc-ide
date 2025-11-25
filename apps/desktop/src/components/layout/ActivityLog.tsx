@@ -47,3 +47,51 @@ export function ActivityLog() {
   }
 
   return (
+    <div className="list-stack" style={{ overflowY: "auto" }}>
+      {(activity.data ?? []).map((item) => (
+        <button
+          className="list-item"
+          key={`${item.entityType}:${item.entityId}:${item.timestamp}`}
+          onClick={() => {
+            if (item.entityType === "deal") {
+              openTab({
+                id: `deal:${item.entityId}`,
+                title: item.entityName,
+                kind: "deal",
+                section: "deals",
+                payload: { dealId: item.entityId },
+              });
+            }
+          }}
+          style={{
+            alignItems: "center",
+            background: "transparent",
+            border: "none",
+            color: "inherit",
+            cursor: item.entityType === "deal" ? "pointer" : "default",
+            display: "grid",
+            gap: 4,
+            textAlign: "left",
+            width: "100%",
+          }}
+          type="button"
+        >
+          <div className="split-inline">
+            <div style={{ alignItems: "center", display: "flex", gap: 8 }}>
+              <span className="muted" style={{ display: "inline-flex" }}>
+                {iconForEntity(item.entityType)}
+              </span>
+              <strong>{item.entityName}</strong>
+            </div>
+            <span className="muted" style={{ fontSize: 11 }}>
+              {formatRelativeDate(item.timestamp)}
+            </span>
+          </div>
+          <span className="muted" style={{ fontSize: 11 }}>
+            {item.entityType} {item.action}
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+}
