@@ -20,3 +20,25 @@ export function useThesis(id?: string) {
 
 export function useCreateThesis() {
   const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: CreateThesisInput) => api.theses.create(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.theses });
+      queryClient.invalidateQueries({ queryKey: queryKeys.pipelineDeals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
+
+export function useUpdateThesis(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: UpdateThesisInput) => api.theses.update(id, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.theses });
+      queryClient.invalidateQueries({ queryKey: queryKeys.thesis(id) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.pipelineDeals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
