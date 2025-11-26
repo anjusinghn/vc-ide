@@ -26,3 +26,30 @@ export default function Testimonial() {
         <WordReveal
           text={testimonialText}
           className="text-4xl md:text-5xl font-medium leading-[1.2]"
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{
+            duration: 0.5,
+            delay: 0.3,
+            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+          }}
+          className="flex items-center gap-4"
+        >
+          <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-lg font-semibold">
+            SC
+          </div>
+          <div>
+            <p className="text-base font-semibold leading-7">Sarah Chen</p>
+            <p className="text-sm font-normal leading-5 text-muted-foreground">
+              Principal, Seed-Stage VC
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
