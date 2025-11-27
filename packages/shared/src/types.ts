@@ -63,3 +63,67 @@ export interface Deal {
   id: string;
   companyId: string;
   fundId?: string | null;
+  stage: DealStage;
+  confidence?: number | null;
+  leadPartner?: string | null;
+  source?: string | null;
+  thesisId?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  lastActivityAt: string;
+}
+
+export interface Person {
+  id: string;
+  name: string;
+  email?: string | null;
+  role?: string | null;
+  companyId?: string | null;
+  linkedinUrl?: string | null;
+  relationshipScore?: number | null;
+  lastContactAt?: string | null;
+  tags: PersonTag[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface StructuredMeetingNotes {
+  metrics: Record<string, string>;
+  risks: string[];
+  asks: string[];
+  nextSteps: string[];
+}
+
+export interface Meeting {
+  id: string;
+  dealId?: string | null;
+  date: string;
+  attendees: string[];
+  meetingType: MeetingType;
+  rawNotes?: string | null;
+  structuredNotes: StructuredMeetingNotes;
+  createdAt: string;
+}
+
+export interface Memo {
+  id: string;
+  dealId?: string | null;
+  memoType: MemoType;
+  title: string;
+  content?: string | null;
+  status: MemoStatus;
+  author?: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Task {
+  id: string;
+  dealId?: string | null;
+  assignee?: string | null;
+  title: string;
+  description?: string | null;
+  status: TaskStatus;
+  dueDate?: string | null;
+  createdAt: string;
+  completedAt?: string | null;
