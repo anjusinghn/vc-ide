@@ -20,3 +20,25 @@ export function useMemoById(id?: string) {
 
 export function useCreateMemo() {
   const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: CreateMemoInput) => api.memos.create(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.memos });
+      queryClient.invalidateQueries({ queryKey: queryKeys.deals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
+
+export function useUpdateMemo(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: UpdateMemoInput) => api.memos.update(id, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.memos });
+      queryClient.invalidateQueries({ queryKey: queryKeys.memo(id) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.deals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
