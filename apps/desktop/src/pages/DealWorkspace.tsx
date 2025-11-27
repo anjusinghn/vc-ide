@@ -38,3 +38,43 @@ export function DealWorkspace({
   if (!dealId) {
     return (
       <p className="flex items-center justify-center h-full text-xs text-muted-foreground">
+        Select a deal to open its workspace.
+      </p>
+    );
+  }
+
+  if (dealQuery.isLoading) {
+    return (
+      <div className="flex flex-col gap-3 p-5">
+        <div className="skeleton h-4 rounded w-2/5" />
+        <div className="skeleton h-4 rounded w-full" />
+        <div className="skeleton h-4 rounded w-4/5" />
+        <div className="skeleton h-4 rounded w-3/5" />
+        <div className="skeleton h-4 rounded w-full" />
+      </div>
+    );
+  }
+
+  if (!dealQuery.data) {
+    return (
+      <p className="flex items-center justify-center h-full text-xs text-muted-foreground">
+        Deal not found.
+      </p>
+    );
+  }
+
+  const deal = dealQuery.data;
+
+  return (
+    <div className="list-stack">
+      <section className="data-card">
+        <div className="split-inline">
+          <div>
+            <strong className="text-lg font-semibold">{deal.company.name}</strong>
+          </div>
+          <div className="action-row">
+            <StageBadge stage={deal.stage} />
+            <ConfidenceBadge value={deal.confidence} />
+          </div>
+        </div>
+        <div className="flex items-center gap-0 border-b border-border mt-3 -mb-[14px] -mx-[14px] px-[14px]">
