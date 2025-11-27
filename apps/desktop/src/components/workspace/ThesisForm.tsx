@@ -51,3 +51,55 @@ export function ThesisForm({
       preferredFounderPatterns: thesis.preferredFounderPatterns,
       antiPatterns: thesis.antiPatterns,
       diligenceQuestions: thesis.diligenceQuestions,
+      active: thesis.active,
+    });
+  }, [thesis]);
+
+  return (
+    <form
+      className="grid gap-3"
+      onSubmit={async (event) => {
+        event.preventDefault();
+        await onSave(form);
+      }}
+    >
+      <div className="grid gap-1.5">
+        <label className="text-xs font-medium text-muted-foreground" htmlFor="thesis-name">
+          Name
+        </label>
+        <Input
+          id="thesis-name"
+          onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
+          value={form.name ?? ""}
+        />
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="thesis-sectors">
+            Sectors
+          </label>
+          <Input
+            id="thesis-sectors"
+            onChange={(event) => setForm((current) => ({ ...current, sectors: splitValues(event.target.value) }))}
+            value={(form.sectors ?? []).join(", ")}
+          />
+        </div>
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="thesis-geographies">
+            Geographies
+          </label>
+          <Input
+            id="thesis-geographies"
+            onChange={(event) => setForm((current) => ({ ...current, geographies: splitValues(event.target.value) }))}
+            value={(form.geographies ?? []).join(", ")}
+          />
+        </div>
+      </div>
+      <div className="grid gap-1.5">
+        <p className="text-xs font-medium text-muted-foreground">Stages</p>
+        <div className="action-row flex-wrap">
+          {THESIS_STAGE_OPTIONS.map((stage) => {
+            const selected = form.stages?.includes(stage) ?? false;
+            return (
+              <button
+                className={`small-action ${selected ? "active" : ""}`}
