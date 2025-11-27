@@ -29,3 +29,33 @@ router.get("/search", (req, res) => {
         json_object(
           'id', c.id,
           'name', c.name,
+          'sector', c.sector,
+          'stage', c.stage,
+          'geography', c.geography,
+          'website', c.website,
+          'description', c.description,
+          'foundedDate', c.foundedDate,
+          'employeeCount', c.employeeCount,
+          'fundingTotal', c.fundingTotal,
+          'createdAt', c.createdAt,
+          'updatedAt', c.updatedAt
+        ) AS company
+      FROM deals d
+      JOIN companies c ON c.id = d.companyId
+      WHERE c.name LIKE ? OR d.leadPartner LIKE ? OR d.source LIKE ?
+      ORDER BY d.lastActivityAt DESC
+      LIMIT 8`,
+    )
+    .all(like, like, like) as Record<string, unknown>[];
+
+  res.json({
+    companies,
+    people,
+    deals: deals.map((deal) => ({
+      ...deal,
+      company: JSON.parse(String(deal.company)),
+    })),
+  });
+});
+
+export default router;
