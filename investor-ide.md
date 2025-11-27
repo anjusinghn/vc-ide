@@ -59,3 +59,63 @@ So instead of "search manually every week," the system continuously runs the the
 ### 3. Deal workspace
 
 For each company/deal:
+
+- all notes, emails, meetings, docs, transcripts, cap table snippets, comps, and memos in one place
+- auto-generated company brief
+- competitor map
+- timeline of changes
+- relationship map to founders, angels, and other funds
+- open questions and diligence checklist
+- confidence level and missing-data warnings
+
+### 4. Meeting-to-memo automation
+
+This is probably the sharpest wedge.
+
+After a founder call:
+
+- transcribe and summarize
+- pull out metrics, asks, concerns, risks
+- update CRM automatically
+- draft follow-up email
+- create tasks for references / market checks / product diligence
+- generate a partner-ready memo from the conversation and prior context
+
+### 5. Relationship intelligence
+
+VC is still relationship-heavy. Your product should make that visible, not pretend it disappears.
+
+Useful things:
+
+- warm intro path finder
+- who at the firm knows this founder or customer
+- network overlap across angels, operators, alumni, prior founders
+- relationship freshness score
+- reminder engine for nurture workflows
+
+Historically, early-stage sourcing has been strongly shaped by networks and referrals, which is exactly why a firm-memory layer matters so much. ([Harmonic][2])
+
+### 6. Diligence copilot with citations
+
+It should:
+
+- summarize data rooms
+- extract risks from contracts and decks
+- build competitor grids
+- flag inconsistencies across founder statements, metrics, and prior materials
+- draft reference-call questions
+- generate investment memos where every important claim links back to a source
+
+No source trace, no trust.
+
+### 7. Portfolio and LP workflows
+
+Later, not first.
+
+Good expansions:
+
+- portfolio KPI ingestion
+- anomaly alerts
+- board meeting prep
+- intros engine for hiring, partnerships, fundraising
+- LP update drafts

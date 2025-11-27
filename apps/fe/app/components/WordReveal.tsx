@@ -27,3 +27,32 @@ export default function WordReveal({ text, className = "" }: WordRevealProps) {
           total={words.length}
           progress={scrollYProgress}
         />
+      ))}
+      <span className="text-muted-foreground ml-2">&rdquo;</span>
+    </div>
+  );
+}
+
+function Word({
+  word,
+  index,
+  total,
+  progress,
+}: {
+  word: string;
+  index: number;
+  total: number;
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+}) {
+  const start = index / total;
+  const end = (index + 1) / total;
+
+  const opacity = useTransform(progress, [start, end], [0.2, 1]);
+  const color = useTransform(progress, [start, end], ["#52525b", "#fafafa"]);
+
+  return (
+    <motion.span style={{ opacity, color }} className="mr-[0.3em]">
+      {word}
+    </motion.span>
+  );
+}
