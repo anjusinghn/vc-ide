@@ -58,3 +58,63 @@ export function MeetingForm({
       date: meeting.date.slice(0, 10),
       dealId: meeting.dealId,
       meetingType: meeting.meetingType,
+      rawNotes: meeting.rawNotes ?? "",
+      structuredNotes: meeting.structuredNotes,
+    });
+  }, [meeting]);
+
+  return (
+    <form
+      className="grid gap-3"
+      onSubmit={async (event) => {
+        event.preventDefault();
+        await onSave(form);
+      }}
+    >
+      <div className="grid grid-cols-2 gap-3">
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="meeting-date">
+            Date
+          </label>
+          <Input
+            id="meeting-date"
+            onChange={(event) => setForm((current) => ({ ...current, date: event.target.value }))}
+            type="date"
+            value={form.date}
+          />
+        </div>
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="meeting-type">
+            Meeting Type
+          </label>
+          <select
+            className="select"
+            id="meeting-type"
+            onChange={(event) =>
+              setForm((current) => ({
+                ...current,
+                meetingType: event.target.value as MeetingType,
+              }))
+            }
+            value={form.meetingType}
+          >
+            <option value="founder_call">Founder Call</option>
+            <option value="partner_meeting">Partner Meeting</option>
+            <option value="reference">Reference</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div className="grid gap-1.5">
+        <p className="text-xs font-medium text-muted-foreground">Attendees</p>
+        <div className="action-row flex-wrap">
+          {people.map((person) => {
+            const selected = form.attendees.includes(person.id);
+            return (
+              <button
+                className={`small-action ${selected ? "active" : ""}`}
+                key={person.id}
+                onClick={(event) => {
+                  event.preventDefault();
+                  setForm((current) => ({
+                    ...current,
