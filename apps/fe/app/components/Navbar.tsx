@@ -31,3 +31,36 @@ export default function Navbar() {
         background: scrolled ? "var(--background)" : "transparent",
         borderBottom: scrolled
           ? "1px solid var(--border)"
+          : "1px solid transparent",
+        opacity: scrolled ? 0.95 : 1,
+        backdropFilter: scrolled ? "blur(8px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(8px)" : "none",
+      }}
+    >
+      <div className="flex items-center gap-12 md:gap-20">
+        <div className="flex items-center gap-2">
+          <span className="text-xl font-bold tracking-tight">Rixie</span>
+        </div>
+
+        <div className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-muted-foreground hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 rounded"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        className="bg-foreground text-background rounded-full text-xs font-semibold px-4 py-2 hover:opacity-80 transition cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      >
+        Request Access
+      </button>
+    </motion.nav>
+  );
+}
