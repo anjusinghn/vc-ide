@@ -64,3 +64,68 @@ Replace the current blue-accent-on-dark palette with a monochrome system plus on
 - Replace all `rgba(255, 255, 255, 0.xx)` hardcoded values with semantic tokens
 
 ### 1.2 Typography System
+
+**Desktop**:
+- Remove `font-weight: 300` from body — use `400` (regular)
+- Establish type scale using Tailwind's defaults: `text-xs` (12px), `text-sm` (14px), `text-base` (16px), `text-lg` (18px), `text-xl` (20px)
+- Section labels: `text-xs font-medium uppercase tracking-wider text-muted-foreground`
+- Page titles: `text-base font-semibold`
+- Body: `text-xs` (12px for data-dense views) or `text-sm` (14px for prose)
+- Keep Geist Sans as primary. It's clean and purpose-built for UI. Remove Inter from the fallback — let it be Geist or system.
+- **Monospace for data**: use `font-mono` (`Geist Mono` or system monospace) for numbers, dates, IDs in pipeline tables and stat cards
+
+**Landing page**:
+- Keep Inter + Instrument Serif — the sans/serif pairing works
+- Tighten heading sizes: current `text-5xl md:text-7xl` hero is fine, but section headings at `text-4xl md:text-5xl` are too large for the content weight. Drop to `text-3xl md:text-4xl`.
+- Add `font-mono` for technical labels (layer numbers, tags in HowItWorks)
+
+### 1.3 Spacing Rhythm
+
+Define consistent spacing tokens used across both apps:
+- Component internal padding: `p-3` (12px) — tight, Cursor-like
+- Section gaps: `gap-3` or `gap-4`
+- Page-level padding: `p-4` (16px)
+- Between stacked cards: `gap-2` (8px) — tighter than current `gap-0` with border separators
+
+### 1.4 Cleanup Tasks
+
+- [ ] Rewrite `:root` and `.dark` blocks in `index.css` with new palette
+- [ ] Rewrite `globals.css` variables to match
+- [ ] Remove `liquid-glass` class definition from both CSS files
+- [ ] Remove the `liquid-glass::before` gradient border effect from `globals.css`
+- [ ] Update body font-weight to 400 in `index.css`
+- [ ] Remove Geist Sans fallback chain — simplify to `"Geist Sans", system-ui, sans-serif`
+- [ ] Add `--font-mono` custom property pointing to `"Geist Mono", ui-monospace, monospace`
+- [ ] Update scrollbar styles: make thumb `oklch(1 0 0 / 0.06)` default, `oklch(1 0 0 / 0.12)` on hover — less visible by default
+
+---
+
+## Phase 2 — Desktop Shell & Layout Chrome
+
+**Scope**: `apps/desktop/src/shell.css`, `Sidebar.tsx`, `TabArea.tsx`, `BottomPanel.tsx`, `StatusBar.tsx`, `MainLayout.tsx`, `CommandPalette.tsx`
+**Depends only on Phase 1 tokens. Independent of Phase 3, 4, 5.**
+
+### 2.1 Sidebar Redesign
+
+Current: `liquid-glass` background, inline styles for header, `style={{fontSize: 10, letterSpacing...}}` labels.
+
+**Target**: Flat surface, no glass. Tight spacing. Cursor-style sidebar with icon+label nav.
+
+Changes:
+- Remove `liquid-glass` class from `<aside>` in `Sidebar.tsx`
+- Replace `sidebar-card` background: `background: var(--card)` — solid, not transparent
+- Sidebar header: remove inline styles, use Tailwind classes. Product name smaller, left-aligned. Remove the `⇆` button or replace with a proper collapse icon (e.g., `PanelLeftClose` from lucide).
+- Nav items: reduce height from 30px to 28px. Active state: `bg-accent/10 text-foreground` with no left-border. The colored left-border active indicator is a dated pattern. Use subtle background highlight only.
+- Section headers: convert from `sidebar-section-header` class to Tailwind — `text-[10px] font-medium uppercase tracking-widest text-muted-foreground px-3 py-2`
+- Recent items: use proper icons per entity type (Briefcase for deals, Lightbulb for theses, etc.) instead of `Clock` for every item
+- Live Deals / Active Thesis sections: add item count badge next to section header
+
+### 2.2 Tab Strip Redesign
+
+Current: VS Code-style tabs with right borders between tabs, blue top-border on active.
+
+**Target**: Cursor-style tabs — clean, minimal, no borders between tabs.
+
+Changes to `shell.css`:
+- `.tab-strip`: remove `background: oklch(0.09...)` — use `background: var(--background)`. Remove bottom border — let content area handle it.
+- `.tab-button`: remove `border-right`, remove `border-top`. Use `text-muted-foreground` default, `text-foreground` on active. Height 32px.
