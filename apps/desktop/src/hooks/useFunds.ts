@@ -20,3 +20,25 @@ export function useFund(id?: string) {
 
 export function useCreateFund() {
   const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: CreateFundInput) => api.funds.create(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.funds });
+      queryClient.invalidateQueries({ queryKey: queryKeys.pipelineDeals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
+
+export function useUpdateFund(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: UpdateFundInput) => api.funds.update(id, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.funds });
+      queryClient.invalidateQueries({ queryKey: queryKeys.fund(id) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.pipelineDeals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
