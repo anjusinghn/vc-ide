@@ -52,3 +52,57 @@ router.get("/deals/:id/full", (req, res) => {
       FROM deals d
       JOIN companies c ON c.id = d.companyId
       LEFT JOIN funds f ON f.id = d.fundId
+      LEFT JOIN theses t ON t.id = d.thesisId
+      WHERE d.id = ?`,
+    )
+    .get(req.params.id) as Record<string, unknown> | undefined;
+
+  if (!row) {
+    res.status(404).json({ error: "Deal not found" });
+    return;
+  }
+
+  const company = JSON.parse(String(row.company));
+  const fund = row.fund ? JSON.parse(String(row.fund)) : null;
+  const thesis = row.thesis ? parseJsonFields(JSON.parse(String(row.thesis)), [
+    "sectors",
+    "stages",
+    "geographies",
+    "preferredFounderPatterns",
+    "antiPatterns",
+    "diligenceQuestions",
+  ]) : null;
+
+  const meetings = (
+    db.prepare("SELECT * FROM meetings WHERE dealId = ? ORDER BY date DESC").all(req.params.id) as Record<
+      string,
+      unknown
+    >[]
+  ).map((item) => parseJsonFields(item, ["attendees", "structuredNotes"]));
+
+  const memos = db
+    .prepare("SELECT * FROM memos WHERE dealId = ? ORDER BY updatedAt DESC")
+    .all(req.params.id) as Record<string, unknown>[];
+
+  const tasks = db
+    .prepare("SELECT * FROM tasks WHERE dealId = ? ORDER BY CASE status WHEN 'open' THEN 0 ELSE 1 END, dueDate ASC")
+    .all(req.params.id) as Record<string, unknown>[];
+
+  const people = db
+    .prepare(
+      `SELECT p.*
+       FROM people p
+       WHERE p.companyId = ? OR p.id IN (
+         SELECT value FROM json_each(
+           COALESCE((SELECT attendees FROM meetings WHERE dealId = ? ORDER BY date DESC LIMIT 1), '[]')
+         )
+       )
+       ORDER BY p.relationshipScore DESC`,
+    )
+    .all(row.companyId, req.params.id) as Record<string, unknown>[];
+
+  const activity = [
+    ...meetings.map((meeting) => ({
+      entityType: "meeting",
+      entityId: String(meeting.id),
+      entityName: String(meeting.meetingType),
