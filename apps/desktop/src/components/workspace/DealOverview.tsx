@@ -19,3 +19,23 @@ export function DealOverview({ deal }: { deal: DealFull }) {
         <div className="action-row mt-3">
           <ConfidenceBadge value={deal.confidence} />
           <span className="badge">Lead {deal.leadPartner ?? "Unassigned"}</span>
+          <span className="badge">{deal.source ?? "Unknown source"}</span>
+        </div>
+        <div className="list-stack mt-3">
+          {deal.tasks.map((task) => (
+            <div className="list-item" key={task.id}>
+              <div className="split-inline">
+                <span className="font-medium text-foreground text-xs">{task.title}</span>
+                <span className="badge">{task.status}</span>
+              </div>
+              <div className="muted">{task.assignee ?? "Unassigned"}</div>
+            </div>
+          ))}
+          {deal.tasks.length === 0 ? (
+            <p className="text-xs text-muted-foreground py-4 text-center">No open tasks.</p>
+          ) : null}
+        </div>
+      </section>
+    </div>
+  );
+}
