@@ -58,3 +58,62 @@ export function useShortcutActions() {
 
     if (index === 3) {
       const thesis = theses.data?.find((entry) => entry.active) ?? theses.data?.[0];
+      openTab({
+        id: thesis ? `thesis:${thesis.id}` : "pipeline",
+        title: thesis?.name ?? "Thesis",
+        kind: thesis ? "thesis" : "pipeline",
+        section: thesis ? "theses" : "pipeline",
+        payload: thesis ? { thesisId: thesis.id } : undefined,
+      });
+      return;
+    }
+
+    if (index === 4) {
+      const person = people.data?.[0];
+      openTab({
+        id: person ? `person:${person.id}` : "pipeline",
+        title: person?.name ?? "People",
+        kind: person ? "person" : "pipeline",
+        section: person ? "people" : "pipeline",
+        payload: person ? { personId: person.id } : undefined,
+      });
+      return;
+    }
+
+    if (index === 5) {
+      const meeting = meetings.data?.[0];
+      openTab({
+        id: meeting ? `meeting:${meeting.id}` : "meeting:new",
+        title: meeting ? "Meeting Notes" : "New Meeting Note",
+        kind: "meeting",
+        section: "meetings",
+        payload: meeting ? { meetingId: meeting.id, dealId: meeting.dealId ?? undefined } : {},
+      });
+    }
+  };
+
+  const openSettings = () => {
+    openTab({
+      id: "settings",
+      title: "Settings",
+      kind: "settings",
+      section: "pipeline",
+    });
+  };
+
+  const createNewDeal = async () => {
+    const companyName = window.prompt("New deal: company name");
+    if (!companyName?.trim()) {
+      return;
+    }
+
+    const stageInput = window.prompt(
+      `Stage (${DEAL_STAGES.join(", ")})`,
+      "sourced",
+    );
+    const stage = DEAL_STAGES.includes((stageInput ?? "sourced").trim() as DealStage)
+      ? ((stageInput ?? "sourced").trim() as DealStage)
+      : "sourced";
+    const sector = window.prompt("Sector (optional)")?.trim() || undefined;
+    const geography = window.prompt("Geography (optional)")?.trim() || undefined;
+
