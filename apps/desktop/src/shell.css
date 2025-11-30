@@ -66,3 +66,70 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted-foreground);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 150ms;
+}
+
+.sidebar-section-header:hover {
+  color: var(--foreground);
+}
+
+.sidebar-list {
+  padding: 2px 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0 12px;
+  height: 28px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 150ms, background 150ms;
+}
+
+.sidebar-item:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+.sidebar-item.active {
+  background: color-mix(in oklch, var(--accent), transparent 90%);
+  color: var(--foreground);
+}
+
+.content-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  overflow: hidden;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.tab-strip {
+  display: flex;
+  align-items: stretch;
+  background: var(--background);
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 32px;
