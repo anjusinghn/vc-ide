@@ -20,3 +20,25 @@ export function useCompany(id?: string) {
 
 export function useCreateCompany() {
   const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: CreateCompanyInput) => api.companies.create(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.companies });
+      queryClient.invalidateQueries({ queryKey: queryKeys.pipelineDeals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
+
+export function useUpdateCompany(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: UpdateCompanyInput) => api.companies.update(id, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.companies });
+      queryClient.invalidateQueries({ queryKey: queryKeys.company(id) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.pipelineDeals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
