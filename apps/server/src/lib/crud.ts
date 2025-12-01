@@ -55,3 +55,60 @@ export function createCrudRouter(config: CrudConfig) {
   router.get(`/${table}`, (req, res) => {
     const filters = filterableFields.filter((field) => req.query[field] !== undefined);
     const whereClause =
+      filters.length > 0
+        ? `WHERE ${filters.map((field) => `${quoteIdentifier(field)} = @${field}`).join(" AND ")}`
+        : "";
+    const params = Object.fromEntries(filters.map((field) => [field, req.query[field]]));
+    const rows = db
+      .prepare(`SELECT * FROM ${quoteIdentifier(table)} ${whereClause} ORDER BY ${orderBy}`)
+      .all(params) as Record<string, unknown>[];
+
+    res.json(rows.map((row) => mapRecord(row, jsonFields, afterRead)));
+  });
+
+  router.get(`/${table}/:id`, (req, res) => {
+    const row = db
+      .prepare(`SELECT * FROM ${quoteIdentifier(table)} WHERE id = ?`)
+      .get(req.params.id) as Record<string, unknown> | undefined;
+
+    if (!row) {
+      res.status(404).json({ error: `${entityName} not found` });
+      return;
+    }
+
+    res.json(mapRecord(row, jsonFields, afterRead));
+  });
+
+  router.post(`/${table}`, (req, res) => {
+    const body = { ...defaults, ...(req.body as Record<string, unknown>) };
+    const missing = requiredFields.filter((field) => body[field] == null || body[field] === "");
+
+    if (missing.length > 0) {
+      res.status(400).json({ error: `Missing required fields: ${missing.join(", ")}` });
+      return;
+    }
+
+    const timestamp = nowIso();
+    const record: Record<string, unknown> = {
+      id: createId(),
+      ...body,
+    };
+
+    if (createdAt) {
+      record.createdAt = timestamp;
+    }
+
+    if (updatedAt) {
+      record.updatedAt = timestamp;
+    }
+
+    const prepared = onBeforeSave ? onBeforeSave(record, "create") : record;
+    insertRecord(db, table, stringifyJsonFields(prepared, jsonFields));
+
+    const createdRecord = db
+      .prepare(`SELECT * FROM ${quoteIdentifier(table)} WHERE id = ?`)
+      .get(prepared.id) as Record<string, unknown>;
+
+    res.status(201).json(mapRecord(createdRecord, jsonFields, afterRead));
+  });
+
