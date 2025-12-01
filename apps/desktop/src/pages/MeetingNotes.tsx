@@ -27,3 +27,31 @@ export function MeetingNotes({
 
   return (
     <div className="list-stack">
+      <section className="data-card">
+        <div>
+          <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
+            Meeting Notes
+          </p>
+          <p className="text-sm font-medium mt-0.5">
+            {meetingQuery.data ? "Edit note" : "New structured note"}
+          </p>
+        </div>
+      </section>
+      <section className="data-card">
+        <MeetingForm
+          defaultDealId={dealId}
+          meeting={meetingQuery.data}
+          onSave={async (payload) => {
+            if (meetingId) {
+              await updateMeeting.mutateAsync(payload);
+              return;
+            }
+
+            await createMeeting.mutateAsync(payload);
+          }}
+          people={peopleQuery.data ?? []}
+        />
+      </section>
+    </div>
+  );
+}
