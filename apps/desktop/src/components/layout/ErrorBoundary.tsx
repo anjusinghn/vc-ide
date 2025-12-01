@@ -34,3 +34,38 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             display: "flex",
             flexDirection: "column",
             gap: 12,
+          }}
+        >
+          <div
+            style={{
+              alignItems: "center",
+              background: "oklch(0.45 0.2 27 / 0.15)",
+              border: "1px solid oklch(0.45 0.2 27 / 0.35)",
+              borderRadius: 12,
+              color: "oklch(0.82 0.12 27)",
+              display: "inline-flex",
+              height: 44,
+              justifyContent: "center",
+              width: 44,
+            }}
+          >
+            <AlertTriangle size={20} />
+          </div>
+          <div style={{ display: "grid", gap: 4, maxWidth: 360 }}>
+            <strong style={{ color: "var(--foreground)", fontSize: 16 }}>Workspace crashed</strong>
+            <span className="muted" style={{ fontSize: 12, lineHeight: 1.5 }}>
+              {this.state.error.message || "A rendering error interrupted the workspace."}
+            </span>
+          </div>
+          <button
+            className="small-action active"
+            onClick={() => window.location.reload()}
+            type="button"
+          >
+            Reload
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
