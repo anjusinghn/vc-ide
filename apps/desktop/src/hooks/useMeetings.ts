@@ -20,3 +20,25 @@ export function useMeeting(id?: string) {
 
 export function useCreateMeeting() {
   const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: CreateMeetingInput) => api.meetings.create(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.meetings });
+      queryClient.invalidateQueries({ queryKey: queryKeys.deals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
+
+export function useUpdateMeeting(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: UpdateMeetingInput) => api.meetings.update(id, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.meetings });
+      queryClient.invalidateQueries({ queryKey: queryKeys.meeting(id) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.deals });
+      queryClient.invalidateQueries({ queryKey: ["activity"] });
+    },
+  });
+}
