@@ -118,3 +118,63 @@ export function PipelineView() {
               <option value="name">Company name</option>
             </select>
           </div>
+        </div>
+
+        {viewMode === "table" ? (
+          filteredDeals.length === 0 ? (
+            <div className="h-64">
+              <EmptyState
+                actionLabel="Create deal"
+                description="Start the pipeline with a new company and deal record, then the rest of the workspace can hang off it."
+                icon={Briefcase}
+                onAction={() => {
+                  void shortcutActions.createNewDeal();
+                }}
+                title="No deals yet"
+              />
+            </div>
+          ) : (
+            <table className="table">
+              <thead>
+                <tr>
+                  <th className="font-mono text-[10px] uppercase tracking-wider">Company</th>
+                  <th className="font-mono text-[10px] uppercase tracking-wider">Stage</th>
+                  <th className="font-mono text-[10px] uppercase tracking-wider">Last Touch</th>
+                  <th className="font-mono text-[10px] uppercase tracking-wider">Confidence</th>
+                  <th className="font-mono text-[10px] uppercase tracking-wider">Lead Partner</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredDeals.map((deal) => (
+                  <tr
+                    className="cursor-pointer even:bg-muted/30 border-l-2 border-transparent hover:border-l-accent/40 transition-colors"
+                    key={deal.id}
+                    onClick={() => openDeal(deal)}
+                  >
+                    <td>
+                      <span className="font-medium">{deal.company.name}</span>
+                    </td>
+                    <td>
+                      <StageBadge stage={deal.stage} />
+                    </td>
+                    <td>{formatRelativeDate(deal.lastActivityAt)}</td>
+                    <td>
+                      <ConfidenceBadge value={deal.confidence} />
+                    </td>
+                    <td>{deal.leadPartner ?? "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )
+        ) : (
+          <div className="kanban-grid">
+            {stageOrder.map((stage) => (
+              <StageColumn deals={grouped[stage]} key={stage} onOpen={openDeal} stage={stage} />
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}
