@@ -154,3 +154,81 @@
                       {
                         "description": "Enables the kill command without any pre-configured scope.",
                         "type": "string",
+                        "const": "shell:allow-kill",
+                        "markdownDescription": "Enables the kill command without any pre-configured scope."
+                      },
+                      {
+                        "description": "Enables the open command without any pre-configured scope.",
+                        "type": "string",
+                        "const": "shell:allow-open",
+                        "markdownDescription": "Enables the open command without any pre-configured scope."
+                      },
+                      {
+                        "description": "Enables the spawn command without any pre-configured scope.",
+                        "type": "string",
+                        "const": "shell:allow-spawn",
+                        "markdownDescription": "Enables the spawn command without any pre-configured scope."
+                      },
+                      {
+                        "description": "Enables the stdin_write command without any pre-configured scope.",
+                        "type": "string",
+                        "const": "shell:allow-stdin-write",
+                        "markdownDescription": "Enables the stdin_write command without any pre-configured scope."
+                      },
+                      {
+                        "description": "Denies the execute command without any pre-configured scope.",
+                        "type": "string",
+                        "const": "shell:deny-execute",
+                        "markdownDescription": "Denies the execute command without any pre-configured scope."
+                      },
+                      {
+                        "description": "Denies the kill command without any pre-configured scope.",
+                        "type": "string",
+                        "const": "shell:deny-kill",
+                        "markdownDescription": "Denies the kill command without any pre-configured scope."
+                      },
+                      {
+                        "description": "Denies the open command without any pre-configured scope.",
+                        "type": "string",
+                        "const": "shell:deny-open",
+                        "markdownDescription": "Denies the open command without any pre-configured scope."
+                      },
+                      {
+                        "description": "Denies the spawn command without any pre-configured scope.",
+                        "type": "string",
+                        "const": "shell:deny-spawn",
+                        "markdownDescription": "Denies the spawn command without any pre-configured scope."
+                      },
+                      {
+                        "description": "Denies the stdin_write command without any pre-configured scope.",
+                        "type": "string",
+                        "const": "shell:deny-stdin-write",
+                        "markdownDescription": "Denies the stdin_write command without any pre-configured scope."
+                      }
+                    ]
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "allow": {
+                    "items": {
+                      "title": "ShellScopeEntry",
+                      "description": "Shell scope entry.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "cmd",
+                            "name"
+                          ],
+                          "properties": {
+                            "args": {
+                              "description": "The allowed arguments for the command execution.",
+                              "allOf": [
+                                {
+                                  "$ref": "#/definitions/ShellScopeEntryAllowedArgs"
+                                }
+                              ]
+                            },
+                            "cmd": {
