@@ -110,3 +110,59 @@ export function Sidebar() {
         <div>
           <div className="text-[10px] tracking-[0.06em] uppercase text-muted-foreground">
             Investor IDE
+          </div>
+          <span className="text-[13px] font-semibold">Neuralyn</span>
+        </div>
+        <button className="small-action" onClick={toggleSidebar} type="button" aria-label="Collapse sidebar">
+          <ChevronsLeft size={14} />
+        </button>
+      </div>
+
+      <div className="sidebar-content">
+        <SidebarSection title="Navigation">
+          {NAV_ITEMS.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                className={`sidebar-item${activeSection === item.key ? " active" : ""}`}
+                key={item.key}
+                onClick={() => {
+                  if (item.key === "pipeline") {
+                    openTab({
+                      id: "pipeline",
+                      title: "Pipeline",
+                      kind: "pipeline",
+                      section: "pipeline",
+                    });
+                    return;
+                  }
+
+                  if (item.key === "deals" && featuredDeal) {
+                    openTab({
+                      id: `deal:${featuredDeal.id}`,
+                      title: featuredDeal.company.name,
+                      kind: "deal",
+                      section: "deals",
+                      payload: { dealId: featuredDeal.id },
+                    });
+                    addRecentItem({
+                      id: `deal:${featuredDeal.id}`,
+                      title: featuredDeal.company.name,
+                      kind: "deal",
+                    });
+                    return;
+                  }
+
+                  if (item.key === "theses" && featuredThesis) {
+                    openTab({
+                      id: `thesis:${featuredThesis.id}`,
+                      title: featuredThesis.name,
+                      kind: "thesis",
+                      section: "theses",
+                      payload: { thesisId: featuredThesis.id },
+                    });
+                    addRecentItem({
+                      id: `thesis:${featuredThesis.id}`,
+                      title: featuredThesis.name,
+                      kind: "thesis",
+                    });
