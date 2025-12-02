@@ -51,3 +51,56 @@ function renderTabContent(tab: ReturnType<typeof useLayout>["tabs"][number] | un
 }
 
 export function TabArea() {
+  const { activeTabId, closeTab, selectTab, tabs } = useLayout();
+  const activeTab = tabs.find((tab) => tab.id === activeTabId) ?? tabs[0];
+
+  if (tabs.length === 0) {
+    return (
+      <section className="content-card">
+        <div className="empty-state flex-col gap-2">
+          <div className="text-[15px] font-semibold text-foreground">
+            Neuralyn — Investor IDE
+          </div>
+          <div className="text-xs max-w-[320px] text-center">
+            Select a section from the sidebar or press{" "}
+            <kbd className="text-[10px] bg-white/[0.08] px-[5px] py-px rounded-[3px] border border-border font-[inherit]">
+              ⌘K
+            </kbd>{" "}
+            to search
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="content-card">
+      <div className="tab-strip">
+        {tabs.map((tab) => (
+          <button
+            className={`tab-button${tab.id === activeTabId ? " active" : ""}`}
+            key={tab.id}
+            onClick={() => selectTab(tab.id)}
+            type="button"
+          >
+            <span>{tab.title}</span>
+            {tab.id !== "pipeline" ? (
+              <button
+                aria-label={`Close ${tab.title}`}
+                className="tab-close"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  closeTab(tab.id);
+                }}
+                type="button"
+              >
+                <X size={11} />
+              </button>
+            ) : null}
+          </button>
+        ))}
+      </div>
+      <div className="tab-body">{renderTabContent(activeTab)}</div>
+    </section>
+  );
+}
