@@ -88,3 +88,47 @@ export function QuickNotes() {
           borderBottom: "1px solid var(--border)",
           padding: "10px 12px",
         }}
+      >
+        <div style={{ display: "grid", gap: 2 }}>
+          <strong style={{ fontSize: 12 }}>Quick Notes</strong>
+          <span className="muted" style={{ fontSize: 11 }}>
+            Debounced autosave every second
+          </span>
+        </div>
+        <span className="muted" style={{ fontSize: 11 }}>
+          {status}
+        </span>
+      </div>
+
+      <div style={{ flex: 1, minHeight: 0, padding: 12 }}>
+        <textarea
+          onChange={(event) => setDraft(event.target.value)}
+          placeholder="Capture stray diligence threads, partner notes, and quick reminders here."
+          ref={textareaRef}
+          style={{
+            background: "oklch(1 0 0 / 0.03)",
+            border: "1px solid var(--border)",
+            borderRadius: 8,
+            color: "var(--foreground)",
+            height: "100%",
+            minHeight: 160,
+            padding: 12,
+            resize: "none",
+            width: "100%",
+          }}
+          value={draft}
+        />
+      </div>
+
+      {draft.trim().length === 0 ? (
+        <div style={{ borderTop: "1px solid var(--border)", height: 118 }}>
+          <EmptyState
+            description="Your scratch note stays in the memo store, so it survives reloads and can be promoted later."
+            icon={NotebookPen}
+            title="Start writing"
+          />
+        </div>
+      ) : null}
+    </section>
+  );
+}
