@@ -78,3 +78,43 @@ export function DealWorkspace({
           </div>
         </div>
         <div className="flex items-center gap-0 border-b border-border mt-3 -mb-[14px] -mx-[14px] px-[14px]">
+          {tabs.map((tab) => (
+            <button
+              className={`px-3 py-2 text-xs capitalize transition-colors border-b-2 -mb-px ${
+                activeTab === tab
+                  ? "border-foreground text-foreground font-medium"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              type="button"
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {activeTab === "overview" ? <DealOverview deal={deal} /> : null}
+      {activeTab === "notes" ? <DealNotes meetings={deal.meetings} /> : null}
+      {activeTab === "memos" ? (
+        memoContent.length === 0 ? (
+          <p className="text-xs text-muted-foreground px-3 py-6 text-center">No memos drafted yet.</p>
+        ) : (
+          <div className="list-stack">
+            {memoContent.map((memo) => (
+              <article className="list-item" key={memo.id}>
+                <div className="split-inline">
+                  <strong>{memo.title}</strong>
+                  <span className="badge">{memo.status}</span>
+                </div>
+                <p>{memo.content ?? "No memo body recorded."}</p>
+              </article>
+            ))}
+          </div>
+        )
+      ) : null}
+      {activeTab === "timeline" ? <DealTimeline activity={deal.activity} /> : null}
+    </div>
+  );
+}
