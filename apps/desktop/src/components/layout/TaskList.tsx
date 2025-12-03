@@ -84,3 +84,46 @@ export function TaskList() {
             actionLabel="Create task"
             description="Tasks created here stay visible in the bottom panel and roll into activity automatically."
             icon={CheckSquare}
+            onAction={() => setFormOpen(true)}
+            title="No open tasks"
+          />
+        ) : (
+          <div className="list-stack" style={{ flex: 1, overflowY: "auto" }}>
+            {openTasks.map((task) => (
+              <TaskItem
+                deal={task.dealId ? dealsById.get(task.dealId) : undefined}
+                isUpdating={updatingTaskId === task.id}
+                key={task.id}
+                onCancel={(currentTask) => {
+                  void updateTaskStatus(currentTask.id, { status: "cancelled" });
+                }}
+                onComplete={(currentTask) => {
+                  void updateTaskStatus(currentTask.id, { status: "done" });
+                }}
+                onOpenDeal={(dealId) =>
+                  openTab({
+                    id: `deal:${dealId}`,
+                    title: dealsById.get(dealId)?.company.name ?? "Deal",
+                    kind: "deal",
+                    section: "deals",
+                    payload: { dealId },
+                  })
+                }
+                task={task}
+              />
+            ))}
+          </div>
+        )}
+      </section>
+
+      <TaskForm
+        deals={pipeline.deals.data ?? []}
+        onOpenChange={setFormOpen}
+        onSave={async (payload) => {
+          await createTask.mutateAsync(payload as CreateTaskInput);
+        }}
+        open={formOpen}
+      />
+    </>
+  );
+}
