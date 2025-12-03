@@ -98,3 +98,52 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
         if (section === "pipeline") {
           setTabs((current) => {
             const existing = current.find((tab) => tab.id === "pipeline");
+            return existing ? current : [defaultPipelineTab, ...current];
+          });
+          setActiveTabId("pipeline");
+        }
+      },
+      openTab: (tab) => {
+        setTabs((current) => {
+          if (current.some((existing) => existing.id === tab.id)) {
+            return current;
+          }
+
+          return [...current, tab];
+        });
+        setActiveTabId(tab.id);
+      },
+      closeTab: (tabId) => {
+        setTabs((current) => {
+          const next = current.filter((tab) => tab.id !== tabId);
+          if (next.length === 0) {
+            setActiveTabId(defaultPipelineTab.id);
+            return [defaultPipelineTab];
+          }
+
+          if (activeTabId === tabId) {
+            setActiveTabId(next[next.length - 1].id);
+          }
+
+          return next;
+        });
+      },
+      selectTab: (tabId) => setActiveTabId(tabId),
+      toggleSidebar: () => setSidebarCollapsed((current) => !current),
+      setCommandOpen,
+    }),
+    [activeSection, activeTabId, commandOpen, sidebarCollapsed, tabs],
+  );
+
+  return <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>;
+}
+
+export function useLayout() {
+  const context = useContext(LayoutContext);
+
+  if (!context) {
+    throw new Error("useLayout must be used inside LayoutProvider");
+  }
+
+  return context;
+}
