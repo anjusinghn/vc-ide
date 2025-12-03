@@ -127,3 +127,67 @@ export interface Task {
   dueDate?: string | null;
   createdAt: string;
   completedAt?: string | null;
+}
+
+export interface ActivityEntry {
+  entityType:
+    | "company"
+    | "deal"
+    | "person"
+    | "meeting"
+    | "memo"
+    | "thesis"
+    | "task"
+    | "fund";
+  entityId: string;
+  entityName: string;
+  action: "created" | "updated";
+  timestamp: string;
+}
+
+export interface PipelineSummary {
+  sourced: number;
+  first_call: number;
+  diligence: number;
+  ic: number;
+  term_sheet: number;
+  closed: number;
+  passed: number;
+}
+
+export interface DealWithCompany extends Deal {
+  company: Company;
+  fund?: Fund | null;
+  thesis?: Thesis | null;
+}
+
+export interface DealFull extends DealWithCompany {
+  meetings: Meeting[];
+  memos: Memo[];
+  tasks: Task[];
+  people: Person[];
+  activity: ActivityEntry[];
+}
+
+export interface SearchResults {
+  companies: Company[];
+  people: Person[];
+  deals: DealWithCompany[];
+}
+
+export type CreateCompanyInput = Omit<Company, "id" | "createdAt" | "updatedAt">;
+export type UpdateCompanyInput = Partial<CreateCompanyInput>;
+export type CreateDealInput = Omit<Deal, "id" | "createdAt" | "updatedAt" | "lastActivityAt">;
+export type UpdateDealInput = Partial<CreateDealInput>;
+export type CreatePersonInput = Omit<Person, "id" | "createdAt" | "updatedAt">;
+export type UpdatePersonInput = Partial<CreatePersonInput>;
+export type CreateMeetingInput = Omit<Meeting, "id" | "createdAt">;
+export type UpdateMeetingInput = Partial<CreateMeetingInput>;
+export type CreateMemoInput = Omit<Memo, "id" | "createdAt" | "updatedAt">;
+export type UpdateMemoInput = Partial<CreateMemoInput>;
+export type CreateThesisInput = Omit<Thesis, "id" | "createdAt" | "updatedAt">;
+export type UpdateThesisInput = Partial<CreateThesisInput>;
+export type CreateTaskInput = Omit<Task, "id" | "createdAt" | "completedAt">;
+export type UpdateTaskInput = Partial<CreateTaskInput>;
+export type CreateFundInput = Omit<Fund, "id" | "createdAt">;
+export type UpdateFundInput = Partial<CreateFundInput>;
