@@ -103,3 +103,56 @@ export function ThesisForm({
             return (
               <button
                 className={`small-action ${selected ? "active" : ""}`}
+                key={stage}
+                onClick={(event) => {
+                  event.preventDefault();
+                  setForm((current) => ({
+                    ...current,
+                    stages: selected
+                      ? (current.stages ?? []).filter((entry) => entry !== stage)
+                      : [...(current.stages ?? []), stage],
+                  }));
+                }}
+                type="button"
+              >
+                {stage.replace("_", " ")}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="thesis-ownership-min">
+            Ownership Target Min
+          </label>
+          <Input
+            id="thesis-ownership-min"
+            min="0"
+            onChange={(event) =>
+              setForm((current) => ({ ...current, ownershipTargetMin: Number(event.target.value) }))
+            }
+            step="0.01"
+            type="number"
+            value={form.ownershipTargetMin ?? 0}
+          />
+        </div>
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="thesis-ownership-max">
+            Ownership Target Max
+          </label>
+          <Input
+            id="thesis-ownership-max"
+            min="0"
+            onChange={(event) =>
+              setForm((current) => ({ ...current, ownershipTargetMax: Number(event.target.value) }))
+            }
+            step="0.01"
+            type="number"
+            value={form.ownershipTargetMax ?? 0}
+          />
+        </div>
+      </div>
+      <div className="grid gap-1.5">
+        <label className="text-xs font-medium text-muted-foreground" htmlFor="thesis-founder-patterns">
+          Preferred Founder Patterns
