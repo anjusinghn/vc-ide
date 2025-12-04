@@ -119,3 +119,63 @@ Good expansions:
 - board meeting prep
 - intros engine for hiring, partnerships, fundraising
 - LP update drafts
+- DDQ / fundraising material drafting
+- portfolio health and concentration views
+
+## How it should work
+
+The system needs five layers.
+
+### 1. Connectors
+
+Bring in the tools investors already use:
+Gmail, Calendar, Affinity, Harmonic/PitchBook, Drive, Notion, Slack, Zoom/Meet transcripts, portfolio reporting tools, fund admin tools.
+
+Your "tiles" idea works here: each tile is a tool connector, not a destination.
+
+### 2. Canonical data model
+
+This is where most products get weak.
+
+You need structured objects:
+
+- Person
+- Company
+- Deal
+- Meeting
+- Memo
+- Thesis
+- Fund
+- LP
+- Portfolio company
+- KPI
+- Task
+
+Every agent reads and writes to these objects, not just to chat history.
+
+### 3. Agent runtime
+
+Different agents, different jobs:
+
+- **Scout** for sourcing
+- **Mapper** for relationships
+- **Analyst** for research
+- **Memo** for writing
+- **Operator** for CRM/tasks/outreach
+- **Portfolio** for monitoring
+- **IR** for LP reporting
+
+### 4. Approval-first action layer
+
+This is critical.
+
+Modes:
+
+- **Observe**: only summarize
+- **Suggest**: draft changes but don't apply
+- **Approve**: user reviews before write/send
+- **Auto-run**: only for safe internal tasks
+
+Never default to sending emails, editing CRM, or changing records without a clear review step.
+
+### 5. Firm memory and learning
