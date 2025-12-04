@@ -106,3 +106,57 @@ router.get("/deals/:id/full", (req, res) => {
       entityType: "meeting",
       entityId: String(meeting.id),
       entityName: String(meeting.meetingType),
+      action: "created",
+      timestamp: String(meeting.createdAt),
+    })),
+    ...memos.map((memo) => ({
+      entityType: "memo",
+      entityId: String(memo.id),
+      entityName: String(memo.title),
+      action: memo.updatedAt === memo.createdAt ? "created" : "updated",
+      timestamp: String(memo.updatedAt),
+    })),
+    ...tasks.map((task) => ({
+      entityType: "task",
+      entityId: String(task.id),
+      entityName: String(task.title),
+      action: task.completedAt ? "updated" : "created",
+      timestamp: String(task.completedAt ?? task.createdAt),
+    })),
+  ].sort((left, right) => right.timestamp.localeCompare(left.timestamp));
+
+  res.json({
+    ...row,
+    company,
+    fund,
+    thesis: thesis ? { ...thesis, active: Boolean(thesis.active) } : null,
+    meetings,
+    memos,
+    tasks,
+    people: people.map((person) => parseJsonFields(person, ["tags"])),
+    activity,
+  });
+});
+
+router.use(
+  createCrudRouter({
+    table: "deals",
+    entityName: "Deal",
+    requiredFields: ["companyId", "stage"],
+    filterableFields: ["companyId", "stage", "fundId", "thesisId"],
+    onBeforeSave: (record, mode) => {
+      if (mode === "create" && !record.lastActivityAt) {
+        record.lastActivityAt = record.updatedAt ?? record.createdAt;
+      }
+
+      if (mode === "update") {
+        record.lastActivityAt = record.updatedAt;
+      }
+
+      return record;
+    },
+    orderBy: "lastActivityAt DESC",
+  }),
+);
+
+export default router;
