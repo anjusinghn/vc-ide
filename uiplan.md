@@ -129,3 +129,68 @@ Current: VS Code-style tabs with right borders between tabs, blue top-border on 
 Changes to `shell.css`:
 - `.tab-strip`: remove `background: oklch(0.09...)` — use `background: var(--background)`. Remove bottom border — let content area handle it.
 - `.tab-button`: remove `border-right`, remove `border-top`. Use `text-muted-foreground` default, `text-foreground` on active. Height 32px.
+- `.tab-button.active`: subtle `bg-card` background. Bottom border indicator (`border-b-2 border-accent`) instead of top border. Drop the blue.
+- `.tab-close`: make invisible by default, visible on tab hover. `opacity-0 group-hover:opacity-100 transition-opacity`.
+- Add horizontal scroll with fade indicators when many tabs open.
+
+### 2.3 Bottom Panel
+
+Current: Uses shadcn `Tabs` with `variant="line"`. Background is hardcoded oklch.
+
+Changes:
+- Background: `var(--card)` instead of hardcoded oklch
+- Tab triggers: tighter, use `text-[11px]` instead of `text-xs`
+- Remove `liquid-glass` if applied anywhere in bottom panel children
+- Panel header height: 32px (match tab strip)
+- `ActivityLog`, `TaskList`, `QuickNotes` — check for inline styles and migrate to Tailwind
+
+### 2.4 Status Bar
+
+Current: `liquid-glass` class, hardcoded background.
+
+Changes:
+- Remove `liquid-glass`
+- Background: solid `var(--card)` or slightly darker than background
+- Height: 24px (tighter — Cursor's is ~22px)
+- Font: `text-[11px] font-mono` for status items — data should be monospaced
+- Settings button: replace text button with a gear icon (`Settings` from lucide), no label
+- Add keyboard shortcut hint: `⌘K` in the status bar, right-aligned
+
+### 2.5 Command Palette
+
+Current: Custom CSS in `shell.css` for `[cmdk-*]` selectors. Looks decent but uses hardcoded oklch values.
+
+Changes:
+- Replace all hardcoded `oklch(0.1 0.002 286)` with `var(--card)`
+- Replace `oklch(1 0 0 / 0.05)` hover states with `var(--accent)/10` or `hsl(var(--muted))`
+- Input height: 44px (slightly smaller, tighter)
+- Results max-height: 320px
+- Add subtle `shadow-lg` to the dialog panel
+- Slide-in animation: keep but make it 100ms (currently 120ms)
+- Add focus ring to selected item: `ring-1 ring-accent/20`
+
+### 2.6 Resize Handles
+
+Current: 8px width with inner pseudo-element.
+
+Changes:
+- Width: 1px visible, 8px hit area (use padding or pseudo-element for hit area)
+- Remove the inner rounded pseudo-element — just a 1px solid line matching `var(--border)`
+- On hover/drag: line becomes `var(--accent)` — only moment of color in the chrome
+
+### 2.7 Shell CSS Cleanup
+
+- Migrate all hardcoded oklch values in `shell.css` to CSS custom properties
+- Consolidate `.data-card`, `.stat-card`, `.bottom-card`, `.content-card` into fewer surface variants: `surface-base` (background), `surface-raised` (card), `surface-overlay` (popover/modal)
+- Remove `.liquid-glass` references everywhere
+
+---
+
+## Phase 3 — Desktop Content Views & Components
+
+**Scope**: `apps/desktop/src/pages/*`, `apps/desktop/src/components/workspace/*`, `apps/desktop/src/components/layout/EmptyState.tsx`
+**Depends only on Phase 1 tokens. Independent of Phase 2, 4, 5.**
+
+### 3.1 Pipeline View
+
+Current: `data-card` nesting, `stats-grid` with 5 stat cards, toolbar with native `<select>` elements.
