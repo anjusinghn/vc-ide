@@ -118,3 +118,63 @@ export function MeetingForm({
                   event.preventDefault();
                   setForm((current) => ({
                     ...current,
+                    attendees: selected
+                      ? current.attendees.filter((entry) => entry !== person.id)
+                      : [...current.attendees, person.id],
+                  }));
+                }}
+                type="button"
+              >
+                {person.name}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      <div className="grid gap-1.5">
+        <label className="text-xs font-medium text-muted-foreground" htmlFor="meeting-raw-notes">
+          Raw Notes
+        </label>
+        <textarea
+          className={textareaClass}
+          id="meeting-raw-notes"
+          onChange={(event) => setForm((current) => ({ ...current, rawNotes: event.target.value }))}
+          value={form.rawNotes}
+        />
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="meeting-metrics">
+            Metrics (one per line: key:value)
+          </label>
+          <textarea
+            className={textareaClass}
+            id="meeting-metrics"
+            onChange={(event) =>
+              setForm((current) => ({
+                ...current,
+                structuredNotes: {
+                  ...current.structuredNotes,
+                  metrics: Object.fromEntries(
+                    splitList(event.target.value).map((line) => {
+                      const [key, ...rest] = line.split(":");
+                      return [key.trim(), rest.join(":").trim()];
+                    }),
+                  ),
+                },
+              }))
+            }
+            value={Object.entries(form.structuredNotes.metrics)
+              .map(([key, value]) => `${key}: ${value}`)
+              .join("\n")}
+          />
+        </div>
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="meeting-risks">
+            Risks
+          </label>
+          <textarea
+            className={textareaClass}
+            id="meeting-risks"
+            onChange={(event) =>
+              setForm((current) => ({
