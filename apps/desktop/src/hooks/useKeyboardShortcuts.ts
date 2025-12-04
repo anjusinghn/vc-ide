@@ -117,3 +117,63 @@ export function useShortcutActions() {
     const sector = window.prompt("Sector (optional)")?.trim() || undefined;
     const geography = window.prompt("Geography (optional)")?.trim() || undefined;
 
+    try {
+      const company = await createCompany.mutateAsync({
+        geography,
+        name: companyName.trim(),
+        sector,
+        stage,
+      });
+      const fundId =
+        funds.data?.find((fund) => fund.name === activeFund)?.id ?? funds.data?.[0]?.id;
+      const thesisId = theses.data?.find((thesis) => thesis.active)?.id ?? theses.data?.[0]?.id;
+
+      const deal = await createDeal.mutateAsync({
+        companyId: company.id,
+        fundId,
+        source: "Manual shortcut entry",
+        stage,
+        thesisId,
+      });
+
+      openTab({
+        id: `deal:${deal.id}`,
+        title: company.name,
+        kind: "deal",
+        section: "deals",
+        payload: { dealId: deal.id },
+      });
+      addRecentItem({
+        id: `deal:${deal.id}`,
+        title: company.name,
+        kind: "deal",
+      });
+    } catch (error) {
+      window.alert(error instanceof Error ? error.message : "Unable to create deal");
+    }
+  };
+
+  const nextTab = () => {
+    if (tabs.length <= 1) {
+      return;
+    }
+
+    const currentIndex = tabs.findIndex((tab) => tab.id === activeTabId);
+    const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % tabs.length;
+    selectTab(tabs[nextIndex].id);
+  };
+
+  const closeCurrentTab = () => {
+    if (activeTabId === "pipeline") {
+      return;
+    }
+
+    closeTab(activeTabId);
+  };
+
+  return {
+    closeCurrentTab,
+    createNewDeal,
+    createQuickNote: focusQuickNotes,
+    nextTab,
+    openSection,
