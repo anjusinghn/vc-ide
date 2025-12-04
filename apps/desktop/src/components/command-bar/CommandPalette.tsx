@@ -125,3 +125,66 @@ export function CommandPalette() {
         kind,
         section,
         payload: thesis ? { thesisId: thesis.id } : undefined,
+      });
+      setCommandOpen(false);
+      return;
+    }
+
+    if (section === "people") {
+      const person = peopleQuery.data?.[0];
+      openTab({
+        id: person ? `person:${person.id}` : section,
+        title: person?.name ?? label,
+        kind,
+        section,
+        payload: person ? { personId: person.id } : undefined,
+      });
+      setCommandOpen(false);
+      return;
+    }
+
+    if (section === "meetings") {
+      const meeting = meetingsQuery.data?.[0];
+      openTab({
+        id: meeting ? `meeting:${meeting.id}` : "meeting:new",
+        title: meeting ? "Meeting Notes" : label,
+        kind,
+        section,
+        payload: meeting
+          ? { dealId: meeting.dealId ?? undefined, meetingId: meeting.id }
+          : {},
+      });
+      setCommandOpen(false);
+      return;
+    }
+
+    openTab({ id: section, title: label, kind, section });
+    setCommandOpen(false);
+  };
+
+  const pipelineDealsByCompanyId = useMemo(
+    () => new Map((pipeline.deals.data ?? []).map((deal) => [deal.company.id, deal])),
+    [pipeline.deals.data],
+  );
+
+  const openRecentItem = (item: (typeof recentItems)[number]) => {
+    const entityId = item.id.split(":")[1];
+
+    if (item.kind === "thesis") {
+      openTab({
+        id: item.id,
+        title: item.title,
+        kind: "thesis",
+        section: "theses",
+        payload: { thesisId: entityId },
+      });
+    } else if (item.kind === "person") {
+      openTab({
+        id: item.id,
+        title: item.title,
+        kind: "person",
+        section: "people",
+        payload: { personId: entityId },
+      });
+    } else if (item.kind === "meeting") {
+      openTab({
