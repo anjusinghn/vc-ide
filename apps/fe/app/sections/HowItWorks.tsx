@@ -199,3 +199,69 @@ export default function HowItWorks() {
                       ease,
                     }}
                     onHoverStart={() => setActive(i)}
+                    onHoverEnd={() => setActive(null)}
+                  >
+                    <div
+                      className={`relative flex items-center gap-4 px-4 py-3.5 rounded-lg cursor-default transition-all duration-300 ${
+                        active === i
+                          ? "bg-white/[0.08]"
+                          : active !== null
+                            ? "opacity-35"
+                            : "hover:bg-white/[0.03]"
+                      }`}
+                    >
+                      <div
+                        className={`w-[2px] self-stretch min-h-[28px] rounded-full transition-all duration-300 ${
+                          active === i ? "bg-white/40" : "bg-white/[0.08]"
+                        }`}
+                      />
+
+                      <span className="text-[11px] font-mono text-white/25 tabular-nums w-5 shrink-0">
+                        0{layer.number}
+                      </span>
+
+                      <span
+                        className={`text-sm font-medium flex-1 transition-colors duration-300 ${
+                          active === i ? "text-white" : "text-white/60"
+                        }`}
+                      >
+                        {layer.title}
+                      </span>
+
+                      <span
+                        className={`text-[10px] font-mono tracking-[0.15em] uppercase transition-colors duration-300 ${
+                          active === i ? "text-white/45" : "text-white/12"
+                        }`}
+                      >
+                        {layer.tag}
+                      </span>
+                    </div>
+                  </motion.div>
+
+                  {i < layers.length - 1 && (
+                    <FlowConnector
+                      active={active === i || active === i + 1}
+                      index={i}
+                      inView={isInView}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Status bar */}
+            <div className="relative mt-5 pt-4 border-t border-white/[0.04]">
+              <div className="flex items-center gap-2.5">
+                <span className="text-[10px] font-mono text-white/20">
+                  {active !== null
+                    ? `Layer ${layers[active].number} · ${layers[active].title}`
+                    : "All layers active"}
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
