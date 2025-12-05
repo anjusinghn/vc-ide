@@ -148,3 +148,53 @@
   }
   *:hover > ::-webkit-scrollbar-thumb {
     background: oklch(1 0 0 / 0.08);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(1 0 0 / 0.15);
+  }
+  ::selection {
+    background: oklch(0.65 0.06 160 / 0.2);
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, oklch(1 0 0 / 0.04) 25%, oklch(1 0 0 / 0.08) 50%, oklch(1 0 0 / 0.04) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+@keyframes skeleton-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Panel resize handles */
+.resize-handle {
+  position: relative;
+  background: transparent;
+}
+.resize-handle[data-panel-group-direction="horizontal"] {
+  width: 1px;
+  padding: 0 3px;
+  background-clip: content-box;
+  background-color: var(--border);
+  cursor: col-resize;
+}
+.resize-handle[data-panel-group-direction="vertical"] {
+  height: 1px;
+  padding: 3px 0;
+  background-clip: content-box;
+  background-color: var(--border);
+  cursor: row-resize;
+}
+.resize-handle:hover,
+.resize-handle[data-resize-handle-state="drag"] {
+  background-color: var(--accent);
+}
+
+/* Dockview overrides for dark terminal aesthetic */
+.dv-react-container {
+  --dv-paneview-header-border-color: var(--border);
+  --dv-separator-border: var(--border);
+  --dv-background-color: var(--background);
+}
