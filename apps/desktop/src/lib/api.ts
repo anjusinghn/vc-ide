@@ -167,3 +167,59 @@ export const api = {
       }),
     update: (id: string, data: UpdateThesisInput) =>
       request<Thesis>(`/theses/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(data),
+      }),
+  },
+  tasks: {
+    list: () => request<Task[]>("/tasks"),
+    get: (id: string) => request<Task>(`/tasks/${id}`),
+    create: (data: CreateTaskInput) =>
+      request<Task>("/tasks", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    update: (id: string, data: UpdateTaskInput) =>
+      request<Task>(`/tasks/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(data),
+      }),
+  },
+  funds: {
+    list: () => request<Fund[]>("/funds"),
+    get: (id: string) => request<Fund>(`/funds/${id}`),
+    create: (data: CreateFundInput) =>
+      request<Fund>("/funds", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    update: (id: string, data: UpdateFundInput) =>
+      request<Fund>(`/funds/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(data),
+      }),
+  },
+  pipeline: {
+    deals: () => request<DealWithCompany[]>("/pipeline/deals"),
+    summary: () => request<PipelineSummary>("/pipeline/summary"),
+  },
+  search: {
+    query: (q: string) => request<SearchResults>(`/search?q=${encodeURIComponent(q)}`),
+  },
+  activity: {
+    recent: (limit = 50) => request<ActivityEntry[]>(`/activity?limit=${limit}`),
+  },
+  settings: {
+    get: () =>
+      request<{
+        apiBase: string;
+        dataPath: string;
+        productName: string;
+        version: string;
+      }>("/settings"),
+    clearSampleData: () =>
+      request<void>("/settings/clear-sample-data", {
+        method: "POST",
+      }),
+  },
+};
