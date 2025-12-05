@@ -112,3 +112,59 @@ export function createCrudRouter(config: CrudConfig) {
     res.status(201).json(mapRecord(createdRecord, jsonFields, afterRead));
   });
 
+  router.patch(`/${table}/:id`, (req, res) => {
+    const existing = db
+      .prepare(`SELECT * FROM ${quoteIdentifier(table)} WHERE id = ?`)
+      .get(req.params.id) as Record<string, unknown> | undefined;
+
+    if (!existing) {
+      res.status(404).json({ error: `${entityName} not found` });
+      return;
+    }
+
+    const body = req.body as Record<string, unknown>;
+    const columns = Object.keys(body);
+
+    if (columns.length === 0) {
+      res.status(400).json({ error: "No fields to update" });
+      return;
+    }
+
+    const record: Record<string, unknown> = { ...body };
+    if (updatedAt) {
+      record.updatedAt = nowIso();
+    }
+
+    const prepared = onBeforeSave ? onBeforeSave(record, "update") : record;
+    const values = stringifyJsonFields(prepared, jsonFields);
+    const assignments = Object.keys(values)
+      .map((column) => `${quoteIdentifier(column)} = @${column}`)
+      .join(", ");
+
+    db.prepare(`UPDATE ${quoteIdentifier(table)} SET ${assignments} WHERE id = @id`).run({
+      ...values,
+      id: req.params.id,
+    });
+
+    const updatedRecord = db
+      .prepare(`SELECT * FROM ${quoteIdentifier(table)} WHERE id = ?`)
+      .get(req.params.id) as Record<string, unknown>;
+
+    res.json(mapRecord(updatedRecord, jsonFields, afterRead));
+  });
+
+  router.delete(`/${table}/:id`, (req, res) => {
+    const result = db
+      .prepare(`DELETE FROM ${quoteIdentifier(table)} WHERE id = ?`)
+      .run(req.params.id);
+
+    if (result.changes === 0) {
+      res.status(404).json({ error: `${entityName} not found` });
+      return;
+    }
+
+    res.status(204).send();
+  });
+
+  return router;
+}
