@@ -166,3 +166,59 @@ export function Sidebar() {
                       title: featuredThesis.name,
                       kind: "thesis",
                     });
+                    return;
+                  }
+
+                  if (item.key === "people" && featuredPerson) {
+                    openTab({
+                      id: `person:${featuredPerson.id}`,
+                      title: featuredPerson.name,
+                      kind: "person",
+                      section: "people",
+                      payload: { personId: featuredPerson.id },
+                    });
+                    addRecentItem({
+                      id: `person:${featuredPerson.id}`,
+                      title: featuredPerson.name,
+                      kind: "person",
+                    });
+                    return;
+                  }
+
+                  if (item.key === "meetings") {
+                    openTab({
+                      id: featuredMeeting ? `meeting:${featuredMeeting.id}` : "meeting:new",
+                      title: featuredMeeting ? "Meeting Notes" : "New Meeting Note",
+                      kind: "meeting",
+                      section: "meetings",
+                      payload: {
+                        dealId: featuredMeeting?.dealId ?? undefined,
+                        meetingId: featuredMeeting?.id,
+                      },
+                    });
+                    return;
+                  }
+
+                  openTab({
+                    id: "pipeline",
+                    title: "Pipeline",
+                    kind: "pipeline",
+                    section: "pipeline",
+                  });
+                }}
+                type="button"
+              >
+                <Icon size={14} />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
+        </SidebarSection>
+
+        <SidebarSection title="Recent" defaultOpen>
+          {recentItems.length === 0 ? (
+            <div className="sidebar-item cursor-default pointer-events-none">
+              <span className="truncate text-[11px]">No recent items</span>
+            </div>
+          ) : null}
+          {recentItems.slice(0, 5).map((item) => (
