@@ -178,3 +178,62 @@ export function MeetingForm({
             id="meeting-risks"
             onChange={(event) =>
               setForm((current) => ({
+                ...current,
+                structuredNotes: {
+                  ...current.structuredNotes,
+                  risks: splitList(event.target.value),
+                },
+              }))
+            }
+            value={form.structuredNotes.risks.join("\n")}
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="meeting-asks">
+            Asks
+          </label>
+          <textarea
+            className={textareaClass}
+            id="meeting-asks"
+            onChange={(event) =>
+              setForm((current) => ({
+                ...current,
+                structuredNotes: {
+                  ...current.structuredNotes,
+                  asks: splitList(event.target.value),
+                },
+              }))
+            }
+            value={form.structuredNotes.asks.join("\n")}
+          />
+        </div>
+        <div className="grid gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground" htmlFor="meeting-next-steps">
+            Next Steps
+          </label>
+          <textarea
+            className={textareaClass}
+            id="meeting-next-steps"
+            onChange={(event) =>
+              setForm((current) => ({
+                ...current,
+                structuredNotes: {
+                  ...current.structuredNotes,
+                  nextSteps: splitList(event.target.value),
+                },
+              }))
+            }
+            value={form.structuredNotes.nextSteps.join("\n")}
+          />
+        </div>
+      </div>
+      <div className="flex justify-end">
+        <Button size="sm" type="submit">
+          Save Meeting
+        </Button>
+      </div>
+    </form>
+  );
+}
