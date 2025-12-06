@@ -156,3 +156,55 @@ export function ThesisForm({
       <div className="grid gap-1.5">
         <label className="text-xs font-medium text-muted-foreground" htmlFor="thesis-founder-patterns">
           Preferred Founder Patterns
+        </label>
+        <textarea
+          className={textareaClass}
+          id="thesis-founder-patterns"
+          onChange={(event) =>
+            setForm((current) => ({ ...current, preferredFounderPatterns: splitValues(event.target.value) }))
+          }
+          value={(form.preferredFounderPatterns ?? []).join(", ")}
+        />
+      </div>
+      <div className="grid gap-1.5">
+        <label className="text-xs font-medium text-muted-foreground" htmlFor="thesis-anti-patterns">
+          Anti-patterns
+        </label>
+        <textarea
+          className={textareaClass}
+          id="thesis-anti-patterns"
+          onChange={(event) =>
+            setForm((current) => ({ ...current, antiPatterns: splitValues(event.target.value) }))
+          }
+          value={(form.antiPatterns ?? []).join(", ")}
+        />
+      </div>
+      <div className="grid gap-1.5">
+        <label className="text-xs font-medium text-muted-foreground" htmlFor="thesis-diligence">
+          Diligence Questions
+        </label>
+        <textarea
+          className={textareaClass}
+          id="thesis-diligence"
+          onChange={(event) =>
+            setForm((current) => ({ ...current, diligenceQuestions: splitValues(event.target.value) }))
+          }
+          value={(form.diligenceQuestions ?? []).join(", ")}
+        />
+      </div>
+      <div className="flex items-center justify-between">
+        <button
+          className={`small-action ${form.active ? "active" : ""}`}
+          onClick={(event) => {
+            event.preventDefault();
+            setForm((current) => ({ ...current, active: !current.active }));
+          }}
+          type="button"
+        >
+          {form.active ? "Active thesis" : "Inactive thesis"}
+        </button>
+        <Button size="sm" type="submit">Save Thesis</Button>
+      </div>
+    </form>
+  );
+}
