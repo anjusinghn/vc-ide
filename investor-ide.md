@@ -179,3 +179,63 @@ Modes:
 Never default to sending emails, editing CRM, or changing records without a clear review step.
 
 ### 5. Firm memory and learning
+
+This is your moat.
+
+The product should learn:
+
+- which deals each partner likes
+- which memos got traction
+- which sourced companies became partner meetings
+- which signals correlated with real outcomes
+- which workflows each firm repeats
+
+That becomes a private behavioral dataset no generic model has.
+
+## What will work well
+
+The strongest version is:
+
+"A control plane for the investment workflow."
+
+Not:
+
+- a new data vendor
+- a single-purpose memo writer
+- a generic chatbot over PDFs
+
+The product works when it becomes the place where an investor says:
+
+> "Do the work around this company."
+
+And the system can safely coordinate research, internal updates, drafting, and tracking.
+
+## What will not work
+
+### 1. Trying to serve every investor at once
+
+VC, PE, public markets, family offices, and angels do not actually share the same workflow.
+Pick one. My recommendation: seed / Series A venture firms.
+
+### 2. Building another giant proprietary market database first
+
+### 3. Full autonomous investing
+
+Partners want leverage, not replacement.
+
+### 4. Generic chat without structure
+
+Without objects, workflows, approvals, and history, it becomes a novelty.
+
+### 5. Black-box scoring
+
+"Trust me, this startup is an 87/100" is weak.
+
+### 6. Compliance-blind automation
+
+Once you sell into registered advisers or broker-dealers, auditability matters a lot. SEC and FINRA recordkeeping rules cover many advice-related and business communications, and electronic records must be preserved and safeguarded. That means no hidden auto-actions, no missing audit trail, and no unmanaged shadow notes. ([SEC][3])
+
+### 7. Loose "AI makes investment decisions" marketing
+
+That is risky. The SEC has already brought cases against investment advisers for false or misleading statements about their AI use. So don't sell "AI picks winners." Sell **speed, coverage, consistency, and auditability**. ([SEC][4])
+
