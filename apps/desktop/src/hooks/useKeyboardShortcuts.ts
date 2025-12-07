@@ -177,3 +177,62 @@ export function useShortcutActions() {
     createQuickNote: focusQuickNotes,
     nextTab,
     openSection,
+    openSettings,
+    openSearch: () => setCommandOpen(true),
+  };
+}
+
+export function useKeyboardShortcuts() {
+  const actions = useShortcutActions();
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase();
+      const modifier = event.metaKey || event.ctrlKey;
+
+      if (!modifier) {
+        return;
+      }
+
+      if (key === "k") {
+        return;
+      }
+
+      if (key === "tab") {
+        event.preventDefault();
+        actions.nextTab();
+        return;
+      }
+
+      if (key === "w") {
+        event.preventDefault();
+        actions.closeCurrentTab();
+        return;
+      }
+
+      if (key >= "1" && key <= "5") {
+        event.preventDefault();
+        actions.openSection(Number(key));
+        return;
+      }
+
+      if (isEditableTarget(event.target)) {
+        return;
+      }
+
+      if (key === "n" && event.shiftKey) {
+        event.preventDefault();
+        actions.createQuickNote();
+        return;
+      }
+
+      if (key === "n") {
+        event.preventDefault();
+        void actions.createNewDeal();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [actions]);
+}
