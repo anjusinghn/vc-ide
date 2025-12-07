@@ -194,3 +194,68 @@ Changes:
 ### 3.1 Pipeline View
 
 Current: `data-card` nesting, `stats-grid` with 5 stat cards, toolbar with native `<select>` elements.
+
+Changes:
+- **Stats strip**: Replace the 5 `stat-card` boxes with a single horizontal strip. Inline layout: `Sourcing: 4 · DD: 2 · IC: 1 · Offered: 1 · Closed: 0`. Font-mono for numbers. No card borders. This is Cursor-style information density — data without decoration.
+- **Toolbar**: Replace native `<select>` with shadcn `Select` or simple button group. Style the view toggle (Table/Kanban) as a segmented control: two buttons, shared border, active one gets `bg-card`.
+- **Table**: Tighten row padding from 7px to 6px. Remove hover background color on rows — use a subtle left-border on hover instead (`border-l-2 border-accent`). Company name column should be `font-medium` not `<strong>`.
+- **Kanban**: `kanban-grid` columns should have a header label with deal count. Column background: `var(--card)`, rounded-lg.
+- **Remove duplicate view toggle** — currently there's both a top-right Table/Kanban and a toolbar View selector. Pick one.
+
+### 3.2 Deal Workspace
+
+Current: Tab buttons are `.small-action` with active state. Card layout.
+
+Changes:
+- Sub-navigation (overview/notes/memos/timeline): Replace `.small-action` buttons with an underline tab pattern. Active tab gets `border-b-2 border-foreground` — monochrome, not colored.
+- Deal header: Company name larger (`text-lg font-semibold`). Stage badge and confidence inline.
+- Remove the "Deal Workspace" muted label — it's redundant when you're already in a deal tab.
+
+### 3.3 Company Card
+
+Current: `card-grid` with Sector/Geography/Funding/Employees.
+
+Changes:
+- Use a definition-list layout: label and value on the same line, separated by dots or space. `Sector · B2B SaaS    Geography · SF Bay Area    Funding · $4.2M`
+- Company description: remove muted class from description text — it's important content, not secondary.
+- Thesis badge: restyle as a subtle tag, not a full badge
+
+### 3.4 Empty States
+
+Current: `EmptyState.tsx` uses extensive inline styles.
+
+Changes:
+- Rewrite entirely with Tailwind classes — zero inline styles
+- Icon container: `w-10 h-10 rounded-lg bg-muted flex items-center justify-center`
+- Title: `text-sm font-medium`
+- Description: `text-xs text-muted-foreground max-w-xs`
+- Action button: use shadcn `Button` variant="outline" size="sm"
+- Reduce vertical padding — empty states shouldn't dominate the viewport
+
+### 3.5 Badges
+
+Current: `.badge` class in shell.css — all badges look identical regardless of meaning.
+
+Changes:
+- Stage badges: use color-coded dot + text, no background. `● Sourcing`, `● DD`, `● IC Review`. Dot colors: neutral gray scale for most, accent for IC/Offered.
+- Confidence badges: text-only with color. `High` in green-ish neutral, `Medium` in amber-ish, `Low` in default muted.
+- Generic badges: keep minimal — `text-[10px] font-medium px-1.5 py-0.5 rounded bg-muted text-muted-foreground`
+
+### 3.6 Forms & Inputs
+
+- All `<input>`, `<textarea>`, `<select>` elements: use shadcn `Input`/`Textarea`/`Select` components, or style consistently with: `bg-transparent border border-border rounded px-2 py-1 text-sm focus:ring-1 focus:ring-accent/30 focus:border-accent/50`
+- Remove native select elements — they break the dark theme on some platforms
+- Form labels: `text-xs font-medium text-muted-foreground mb-1`
+
+### 3.7 Tables
+
+- `.table th`: add `font-mono text-[10px] uppercase tracking-wider` — column headers should look like terminal column labels
+- `.table td`: `text-xs` — tighten from 12px
+- Alternating row backgrounds: `even:bg-muted/30` — very subtle zebra striping
+- Cursor uses no visible row borders — try `border-transparent` on `td` with just the zebra stripe for delineation
+
+### 3.8 Settings View
+
+- Remove inline styles on buttons
+- Use shadcn `Button` for actions
+- "Clear sample data" destructive button: use shadcn `Button variant="destructive"` instead of inline oklch colors

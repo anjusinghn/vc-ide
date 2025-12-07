@@ -188,3 +188,67 @@ export function CommandPalette() {
       });
     } else if (item.kind === "meeting") {
       openTab({
+        id: item.id,
+        title: item.title,
+        kind: "meeting",
+        section: "meetings",
+        payload: { meetingId: entityId },
+      });
+    } else if (item.kind === "company") {
+      const deal = pipelineDealsByCompanyId.get(entityId);
+      openTab({
+        id: item.id,
+        title: item.title,
+        kind: "company",
+        section: "deals",
+        payload: { dealId: deal?.id },
+      });
+    } else {
+      openTab({
+        id: item.id,
+        title: item.title,
+        kind: item.kind,
+        section: "deals",
+        payload: { dealId: entityId },
+      });
+    }
+
+    setCommandOpen(false);
+  };
+
+  return (
+    <CommandDialog open={commandOpen} onOpenChange={setCommandOpen}>
+      <CommandInput onValueChange={setQuery} placeholder="Search actions and navigate…" value={query} />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+
+        <CommandGroup heading="Navigation">
+          {NAV_ENTRIES.map((entry) => {
+            const Icon = entry.icon;
+            return (
+              <CmdkItem
+                key={entry.section}
+                onSelect={() =>
+                  navigate(
+                    entry.section,
+                    entry.kind,
+                    entry.label.replace("Go to ", ""),
+                  )
+                }
+                value={entry.label}
+              >
+                <Icon size={14} className="shrink-0 opacity-[0.65]" />
+                <span className="flex-1">{entry.label}</span>
+                {entry.shortcut ? (
+                  <span className="text-[10px] bg-white/[0.08] px-[5px] py-px rounded-[3px] border border-border text-muted-foreground">
+                    {entry.shortcut}
+                  </span>
+                ) : null}
+              </CmdkItem>
+            );
+          })}
+        </CommandGroup>
+
+        <CommandGroup heading="Actions">
+          {ACTION_ENTRIES.map((entry) => (
+            <CmdkItem
