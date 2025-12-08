@@ -326,3 +326,68 @@ export function seedIfEmpty() {
       createdAt: daysAgo(2),
     },
     {
+      id: createId(),
+      dealId: deals[4].id,
+      date: daysAgo(3),
+      attendees: JSON.stringify([people[5].id, people[6].id]),
+      meetingType: "reference",
+      rawNotes: "Operators praised implementation speed and clinical workflow adoption.",
+      structuredNotes: JSON.stringify({
+        metrics: {
+          implementationTime: "11 days",
+          expansionRate: "38%",
+        },
+        risks: ["early enterprise support load"],
+        asks: ["reference transcript digest"],
+        nextSteps: ["legal diligence", "term sheet revisions"],
+      }),
+      createdAt: daysAgo(3),
+    },
+  ];
+
+  const memos = [
+    {
+      id: createId(),
+      dealId: deals[3].id,
+      memoType: "ic_memo",
+      title: "Delta Security IC Memo",
+      content:
+        "# Investment case\n\nStrong security tailwinds, credible founding team, and clear platform wedge.\n\n## Risks\n\n- crowded market\n- enterprise sales cycles\n",
+      status: "review",
+      author: "Nadia Park",
+      createdAt: daysAgo(2),
+      updatedAt: daysAgo(1),
+    },
+    {
+      id: createId(),
+      dealId: deals[0].id,
+      memoType: "company_brief",
+      title: "Acme Corp Company Brief",
+      content:
+        "# Snapshot\n\nAcme sells orchestration infrastructure for multimodal agent systems with strong early design-partner pull.",
+      status: "draft",
+      author: "Leo Grant",
+      createdAt: daysAgo(4),
+      updatedAt: daysAgo(1),
+    },
+  ];
+
+  const tasks = [
+    {
+      id: createId(),
+      dealId: deals[0].id,
+      assignee: "Nadia Park",
+      title: "Schedule security diligence",
+      description: "Lock a technical review with the founding engineer.",
+      status: "open",
+      dueDate: daysAgo(-2),
+      createdAt: daysAgo(1),
+      completedAt: null,
+    },
+    {
+      id: createId(),
+      dealId: deals[1].id,
+      assignee: "Leo Grant",
+      title: "Review founder deck",
+      description: "Compare latest product roadmap to the first call notes.",
+      status: "open",
