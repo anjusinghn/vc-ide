@@ -252,3 +252,66 @@ export function CommandPalette() {
         <CommandGroup heading="Actions">
           {ACTION_ENTRIES.map((entry) => (
             <CmdkItem
+              key={entry.value}
+              onSelect={() => {
+                if (entry.value === "new-meeting-note") {
+                  openTab({
+                    id: "meeting:new",
+                    title: "New Meeting Note",
+                    kind: "meeting",
+                    section: "meetings",
+                      payload: {},
+                  });
+                } else if (entry.value === "new-note") {
+                  shortcutActions.createQuickNote();
+                } else if (entry.value === "settings") {
+                  shortcutActions.openSettings();
+                } else {
+                  void shortcutActions.createNewDeal();
+                }
+                setCommandOpen(false);
+              }}
+              value={entry.label}
+            >
+              {entry.value === "settings" ? (
+                <Settings size={14} className="shrink-0 opacity-[0.65]" />
+              ) : (
+                <Plus size={14} className="shrink-0 opacity-[0.65]" />
+              )}
+              <span>{entry.label}</span>
+            </CmdkItem>
+          ))}
+        </CommandGroup>
+
+        {query.trim().length > 1 ? (
+          <>
+            <CommandGroup heading="Deals">
+              {(searchQuery.data?.deals ?? []).map((deal) => (
+                <CmdkItem
+                  key={deal.id}
+                  onSelect={() => {
+                    openTab({
+                      id: `deal:${deal.id}`,
+                      title: deal.company.name,
+                      kind: "deal",
+                      section: "deals",
+                      payload: { dealId: deal.id },
+                    });
+                    setCommandOpen(false);
+                  }}
+                  value={`${deal.company.name} ${deal.stage} ${deal.leadPartner ?? ""}`}
+                >
+                  <Briefcase size={14} className="shrink-0 opacity-[0.65]" />
+                  <span className="flex-1">{deal.company.name}</span>
+                  <span className="text-[10px] text-muted-foreground">{deal.stage}</span>
+                </CmdkItem>
+              ))}
+            </CommandGroup>
+
+            <CommandGroup heading="Companies">
+              {(searchQuery.data?.companies ?? [])
+                .filter((company) => pipelineDealsByCompanyId.has(company.id))
+                .map((company) => {
+                  const deal = pipelineDealsByCompanyId.get(company.id)!;
+                  return (
+                    <CmdkItem
