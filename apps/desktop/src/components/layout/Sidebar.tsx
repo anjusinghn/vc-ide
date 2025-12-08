@@ -222,3 +222,59 @@ export function Sidebar() {
             </div>
           ) : null}
           {recentItems.slice(0, 5).map((item) => (
+            <button className="sidebar-item" key={item.id} onClick={() => openRecentTab(item, openTab)} type="button">
+              {iconForRecentKind(item.kind)}
+              <span className="truncate">
+                {item.title}
+              </span>
+            </button>
+          ))}
+        </SidebarSection>
+
+        <SidebarSection title="Live Deals" defaultOpen badge={liveDeals.length}>
+          {liveDeals.map((deal) => (
+            <button
+              className="sidebar-item"
+              key={deal.id}
+              onClick={() =>
+                openTab({
+                  id: `deal:${deal.id}`,
+                  title: deal.company.name,
+                  kind: "deal",
+                  section: "deals",
+                  payload: { dealId: deal.id },
+                })
+              }
+              type="button"
+            >
+              <Briefcase size={12} />
+              <span>{deal.company.name}</span>
+            </button>
+          ))}
+        </SidebarSection>
+
+        <SidebarSection title="Active Thesis" defaultOpen badge={activeTheses.length}>
+          {activeTheses.map((thesis) => (
+            <button
+              className="sidebar-item"
+              key={thesis.id}
+              onClick={() =>
+                openTab({
+                  id: `thesis:${thesis.id}`,
+                  title: thesis.name,
+                  kind: "thesis",
+                  section: "theses",
+                  payload: { thesisId: thesis.id },
+                })
+              }
+              type="button"
+            >
+              <Lightbulb size={12} />
+              <span>{thesis.name}</span>
+            </button>
+          ))}
+        </SidebarSection>
+      </div>
+    </aside>
+  );
+}
