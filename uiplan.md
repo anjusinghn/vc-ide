@@ -259,3 +259,68 @@ Changes:
 - Remove inline styles on buttons
 - Use shadcn `Button` for actions
 - "Clear sample data" destructive button: use shadcn `Button variant="destructive"` instead of inline oklch colors
+- About section: use monospace font for API base URL and data path values
+
+### 3.9 Inline Style Migration
+
+Migrate all remaining `style={{}}` props to Tailwind utility classes in:
+- `Sidebar.tsx` — header branding, recent items overflow
+- `TabArea.tsx` — empty state kbd styling
+- `PipelineView.tsx` — stats grid margin, empty state height
+- `DealWorkspace.tsx` — action row margin
+- `SettingsView.tsx` — button justification, destructive button colors
+- `CompanyCard.tsx` — card grid margin, description margin
+- `EmptyState.tsx` — entire component
+
+---
+
+## Phase 4 — Landing Page Redesign
+
+**Scope**: `apps/fe/app/sections/*`, `apps/fe/app/components/*`, `apps/fe/app/globals.css`
+**Depends only on Phase 1 tokens. Independent of Phase 2, 3, 5.**
+
+### 4.1 Remove AI Slop
+
+Delete from every section:
+- `liquid-glass` class usage (Hero badge, feature cards, differentiator cards, CTA button, HowItWorks number circles)
+- `liquid-glass::before` gradient border effect in globals.css
+- Purple radial gradient orb in Hero (the `rgba(120, 119, 198, 0.15)` blob)
+- Ambient blur orb in CTA (`bg-white/[0.03] blur-[120px]`)
+- Grid dot pattern overlay in HowItWorks (`backgroundImage: linear-gradient...backgroundSize: 20px 20px`)
+- The pulsing green dot in HowItWorks status bar
+
+### 4.2 Hero Section
+
+Current: Video background + dark overlay + floating glass badge + giant heading + gradient orb.
+
+**Target**: Clean, confident, no gimmicks.
+
+Changes:
+- Keep the video background — it's actual product content, not decoration
+- Remove the radial gradient orb animation entirely
+- Hero badge: replace `liquid-glass` with solid `bg-white/5 border border-white/10`. Remove the inner white `bg-white text-black rounded-md` pill — just text.
+- CTA button: keep `bg-white text-black rounded-full` — that works. But remove `whileHover scale` — subtle opacity change is enough.
+- Bottom gradient fade: keep, it's functional
+
+### 4.3 Features Section
+
+Current: 3-column grid of identical glass cards with icon-title-description.
+
+**Target**: Break the identical card grid. Make it scannable, not decorative.
+
+Option A — List layout:
+- Replace 3-col grid with a 2-column layout: left column has feature title + short description, right side is empty/whitespace. Stacked vertically. Each feature is a row, not a card.
+- No icons — the titles are clear enough. Icons on every card is AI pattern #1.
+- Add thin horizontal rule between features
+
+Option B — Asymmetric grid:
+- Keep grid but vary the sizes. First feature spans 2 columns. Others are single column. Break the repetition.
+- Remove the glass card styling. Use `border border-border rounded-xl p-6 hover:border-white/15 transition-colors`.
+- Keep icons but make them smaller (16px) and muted.
+
+Recommend **Option A** — it's more Cursor-like (information-first, not card-first).
+
+### 4.4 How It Works Section
+
+Current: Left description list + right architecture diagram. Pretty good actually.
+
