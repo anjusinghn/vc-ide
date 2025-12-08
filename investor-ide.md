@@ -239,3 +239,63 @@ Once you sell into registered advisers or broker-dealers, auditability matters a
 
 That is risky. The SEC has already brought cases against investment advisers for false or misleading statements about their AI use. So don't sell "AI picks winners." Sell **speed, coverage, consistency, and auditability**. ([SEC][4])
 
+## The best launch wedge
+
+I'd start here:
+
+- Early-stage VC firms
+- **Initial wedge:** meeting-to-memo + sourcing copilot
+- **Buyer:** associates, principals, platform teams
+- **Why:** high-frequency pain, obvious ROI, easier than replacing back-office infrastructure
+
+## MVP
+
+Ship these first:
+
+1. Gmail + Calendar + CRM + one data provider integration
+2. Founder meeting transcription and structured note extraction
+3. Auto CRM updates with approval
+4. Company brief + competitor map + relationship map
+5. IC memo generator with citations
+6. Watchlists and thesis monitors
+7. Weekly pipeline review draft
+
+That is enough to save real time and build habit.
+
+### Do not ship first
+
+- full fund administration
+- cap table system
+- general BI warehouse
+- autonomous outbound
+- public-markets workflows
+- "predict the next unicorn" scoring
+
+## The real moat
+
+Not the model. Not the UI. Not the chat.
+
+The moat is:
+
+- firm-specific workflow memory
+- partner preference modeling
+- proprietary relationship graph
+- decision history
+- action approvals and audit logs
+- feedback loop from outcomes
+
+That is what makes it hard to copy.
+
+## A crisp product thesis
+
+Investor IDE = the operating system for private-market decision work.
+It turns fragmented tools into one environment where investors can source, evaluate, decide, and report with much less manual coordination.
+
+**"From founder call to IC memo in one workspace."**
+
+Reply with the buyer you want first — **early-stage VC, growth, PE, angel syndicate, or public-market investor** — and I'll reshape this into a tighter PRD with screens, workflows, and a v1 roadmap.
+
+[1]: https://www.affinity.co/?utm_source=chatgpt.com "Affinity: CRM for Private Capital"
+[2]: https://www.harmonic.ai/about?utm_source=chatgpt.com "About - Harmonic"
+[3]: https://www.sec.gov/files/OCIE%20Risk%20Alert%20-%20Electronic%20Messaging.pdf?utm_source=chatgpt.com "Observations from Investment Adviser Examinations Relating to ..."
+[4]: https://www.sec.gov/newsroom/press-releases/2024-36?utm_source=chatgpt.com "SEC Charges Two Investment Advisers with Making False and Misleading ..."
