@@ -391,3 +391,69 @@ export function seedIfEmpty() {
       title: "Review founder deck",
       description: "Compare latest product roadmap to the first call notes.",
       status: "open",
+      dueDate: daysAgo(-1),
+      createdAt: daysAgo(3),
+      completedAt: null,
+    },
+    {
+      id: createId(),
+      dealId: deals[3].id,
+      assignee: "Priya Shah",
+      title: "Finalize IC narrative",
+      description: "Fold retention data into committee memo.",
+      status: "done",
+      dueDate: daysAgo(1),
+      createdAt: daysAgo(4),
+      completedAt: daysAgo(1),
+    },
+    {
+      id: createId(),
+      dealId: deals[4].id,
+      assignee: "Nadia Park",
+      title: "Share legal comments",
+      description: "Return markup on term sheet language.",
+      status: "open",
+      dueDate: daysAgo(0),
+      createdAt: daysAgo(2),
+      completedAt: null,
+    },
+  ];
+
+  const insert = db.transaction(() => {
+    db.prepare(
+      `INSERT INTO funds (id, name, vintageYear, targetSize, strategy, createdAt)
+       VALUES (@id, @name, @vintageYear, @targetSize, @strategy, @createdAt)`,
+    ).run({
+      id: fundId,
+      name: "Neuralyn Fund I",
+      vintageYear: 2024,
+      targetSize: 75_000_000,
+      strategy: "Seed software investments",
+      createdAt: daysAgo(30),
+    });
+
+    db.prepare(
+      `INSERT INTO theses (
+        id, name, fundId, sectors, stages, geographies, ownershipTargetMin, ownershipTargetMax,
+        preferredFounderPatterns, antiPatterns, diligenceQuestions, active, createdAt, updatedAt
+      ) VALUES (
+        @id, @name, @fundId, @sectors, @stages, @geographies, @ownershipTargetMin, @ownershipTargetMax,
+        @preferredFounderPatterns, @antiPatterns, @diligenceQuestions, @active, @createdAt, @updatedAt
+      )`,
+    ).run(thesis);
+
+    const companyStatement = db.prepare(
+      `INSERT INTO companies (
+        id, name, sector, stage, geography, website, description, foundedDate,
+        employeeCount, fundingTotal, createdAt, updatedAt
+      ) VALUES (
+        @id, @name, @sector, @stage, @geography, @website, @description, @foundedDate,
+        @employeeCount, @fundingTotal, @createdAt, @updatedAt
+      )`,
+    );
+
+    for (const company of companies) {
+      companyStatement.run({
+        ...company,
+        createdAt: daysAgo(20),
+        updatedAt: daysAgo(2),
