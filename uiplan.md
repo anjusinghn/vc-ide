@@ -324,3 +324,68 @@ Recommend **Option A** — it's more Cursor-like (information-first, not card-fi
 
 Current: Left description list + right architecture diagram. Pretty good actually.
 
+Changes:
+- Left side: keep the numbered list with connector lines — this works
+- Number circles: replace `liquid-glass` with `border border-border bg-card`. Simpler.
+- Right side diagram: remove grid dot overlay, remove green pulsing dot, remove `font-mono` on "System Architecture" label (or keep mono but drop the dot prefix)
+- Layer rows: simplify hover state — just `text-foreground` on hover, don't shift adjacent layers with transform
+- The concept is strong. Just strip decorative noise.
+
+### 4.5 Differentiators Section
+
+Current: 2-col grid of glass cards with icon + title + description.
+
+Changes:
+- Remove `liquid-glass` from cards
+- Replace with: `border border-border rounded-xl p-6`
+- Move icon inline with title (already done, good)
+- Consider making icons monochrome and smaller
+- Heading "The moat is not the model." — strong copy, keep it
+
+### 4.6 CTA Section
+
+Current: Giant blur orb + centered heading + two buttons.
+
+Changes:
+- Remove the animated blur orb entirely
+- Keep the centered layout — it's clean
+- Primary button: `bg-foreground text-background` — keep
+- Secondary button: replace `liquid-glass rounded-full` with `border border-border rounded-full hover:bg-white/5`
+- Remove `whileHover scale` from buttons — use opacity or border-color transition
+
+### 4.7 Navbar
+
+Current: Solid implementation with scroll-triggered glass effect.
+
+Changes:
+- On scroll: replace `rgba(255, 255, 255, 0.04)` glass with solid `bg-background/95 backdrop-blur-sm`. Simpler.
+- "Request Access" button: replace `bg-white text-black rounded-lg` with `bg-foreground text-background rounded-full text-xs` — match the smaller nav context
+- Logo "Rixie": add slight letter-spacing `tracking-tight` (already has it, good)
+
+### 4.8 Testimonial Section
+
+- Read `Testimonial.tsx` and assess — likely needs similar glass removal
+- If it uses a quote card, strip it to text-only with a thin left border accent
+
+---
+
+## Phase 5 — Motion, Interaction & Polish
+
+**Scope**: Both apps. All interaction patterns, transitions, hover states, focus management.
+**Depends only on Phase 1 tokens. Independent of Phase 2, 3, 4.**
+
+### 5.1 Desktop Transitions
+
+Add CSS transitions to all interactive elements in `shell.css` and component files:
+
+- **Tab switches**: content area fades in over 100ms (`opacity 0 -> 1, translateY -4px -> 0`)
+- **Sidebar item hover**: `transition-colors duration-150`
+- **Panel resize**: already handled by react-resizable-panels, but add a subtle border-color change on the resize handle during drag
+- **Command palette**: tighten slide-in to 80ms, add backdrop fade-in 100ms
+- **Button hovers**: all `.small-action` buttons get `transition-all duration-150`
+
+### 5.2 Landing Page Motion Refinement
+
+Current Framer Motion usage is decent but over-animated in places.
+
+Changes:
