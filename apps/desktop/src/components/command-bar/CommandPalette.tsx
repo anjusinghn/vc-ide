@@ -315,3 +315,66 @@ export function CommandPalette() {
                   const deal = pipelineDealsByCompanyId.get(company.id)!;
                   return (
                     <CmdkItem
+                      key={company.id}
+                      onSelect={() => {
+                        openTab({
+                          id: `company:${company.id}`,
+                          title: company.name,
+                          kind: "company",
+                          section: "deals",
+                          payload: { dealId: deal.id },
+                        });
+                        setCommandOpen(false);
+                      }}
+                      value={`${company.name} ${company.sector ?? ""}`}
+                    >
+                      <BarChart3 size={14} className="shrink-0 opacity-[0.65]" />
+                      <span className="flex-1">{company.name}</span>
+                      <span className="text-[10px] text-muted-foreground">{company.sector ?? "Company"}</span>
+                    </CmdkItem>
+                  );
+                })}
+            </CommandGroup>
+
+            <CommandGroup heading="People">
+              {(searchQuery.data?.people ?? []).map((person) => (
+                <CmdkItem
+                  key={person.id}
+                  onSelect={() => {
+                    openTab({
+                      id: `person:${person.id}`,
+                      title: person.name,
+                      kind: "person",
+                      section: "people",
+                      payload: { personId: person.id },
+                    });
+                    setCommandOpen(false);
+                  }}
+                  value={`${person.name} ${person.role ?? ""}`}
+                >
+                  <Users size={14} className="shrink-0 opacity-[0.65]" />
+                  <span className="flex-1">{person.name}</span>
+                  <span className="text-[10px] text-muted-foreground">{person.role ?? "Person"}</span>
+                </CmdkItem>
+              ))}
+            </CommandGroup>
+          </>
+        ) : null}
+
+        {recentItems.length > 0 ? (
+          <CommandGroup heading="Recent">
+            {recentItems.slice(0, 3).map((item) => (
+              <CmdkItem key={item.id} onSelect={() => openRecentItem(item)} value={item.title}>
+                <Clock size={14} className="shrink-0 opacity-[0.65]" />
+                <span className="flex-1">{item.title}</span>
+                <span className="text-[10px] text-muted-foreground shrink-0">
+                  {item.kind}
+                </span>
+              </CmdkItem>
+            ))}
+          </CommandGroup>
+        ) : null}
+      </CommandList>
+    </CommandDialog>
+  );
+}
