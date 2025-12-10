@@ -402,3 +402,71 @@
 [cmdk-item]:hover {
   background: oklch(1 0 0 / 0.05);
 }
+
+[cmdk-empty] {
+  padding: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+@keyframes cmdk-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.muted {
+  color: var(--muted-foreground);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.surface {
+  background: var(--card);
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--muted-foreground);
+  font-size: 13px;
+  text-align: center;
+  padding: 24px;
+  animation: fade-in 150ms ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.split-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.small-action {
+  padding: 3px 8px;
+  font-size: 11px;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted-foreground);
+  cursor: pointer;
