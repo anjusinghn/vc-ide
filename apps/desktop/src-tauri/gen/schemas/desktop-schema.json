@@ -542,3 +542,81 @@
           "const": "core:app:deny-remove-listener",
           "markdownDescription": "Denies the remove_listener command without any pre-configured scope."
         },
+        {
+          "description": "Denies the set_app_theme command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-set-app-theme",
+          "markdownDescription": "Denies the set_app_theme command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_dock_visibility command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-set-dock-visibility",
+          "markdownDescription": "Denies the set_dock_visibility command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the tauri_version command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-tauri-version",
+          "markdownDescription": "Denies the tauri_version command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the version command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-version",
+          "markdownDescription": "Denies the version command without any pre-configured scope."
+        },
+        {
+          "description": "Default permissions for the plugin, which enables all commands.\n#### This default permission set includes:\n\n- `allow-listen`\n- `allow-unlisten`\n- `allow-emit`\n- `allow-emit-to`",
+          "type": "string",
+          "const": "core:event:default",
+          "markdownDescription": "Default permissions for the plugin, which enables all commands.\n#### This default permission set includes:\n\n- `allow-listen`\n- `allow-unlisten`\n- `allow-emit`\n- `allow-emit-to`"
+        },
+        {
+          "description": "Enables the emit command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:event:allow-emit",
+          "markdownDescription": "Enables the emit command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the emit_to command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:event:allow-emit-to",
+          "markdownDescription": "Enables the emit_to command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the listen command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:event:allow-listen",
+          "markdownDescription": "Enables the listen command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the unlisten command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:event:allow-unlisten",
+          "markdownDescription": "Enables the unlisten command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the emit command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:event:deny-emit",
+          "markdownDescription": "Denies the emit command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the emit_to command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:event:deny-emit-to",
+          "markdownDescription": "Denies the emit_to command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the listen command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:event:deny-listen",
+          "markdownDescription": "Denies the listen command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the unlisten command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:event:deny-unlisten",
+          "markdownDescription": "Denies the unlisten command without any pre-configured scope."
+        },
