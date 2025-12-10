@@ -457,3 +457,68 @@ export function seedIfEmpty() {
         ...company,
         createdAt: daysAgo(20),
         updatedAt: daysAgo(2),
+      });
+    }
+
+    const dealStatement = db.prepare(
+      `INSERT INTO deals (
+        id, companyId, fundId, stage, confidence, leadPartner, source, thesisId,
+        createdAt, updatedAt, lastActivityAt
+      ) VALUES (
+        @id, @companyId, @fundId, @stage, @confidence, @leadPartner, @source, @thesisId,
+        @createdAt, @updatedAt, @lastActivityAt
+      )`,
+    );
+    for (const deal of deals) {
+      dealStatement.run(deal);
+    }
+
+    const peopleStatement = db.prepare(
+      `INSERT INTO people (
+        id, name, email, role, companyId, linkedinUrl, relationshipScore, lastContactAt,
+        tags, createdAt, updatedAt
+      ) VALUES (
+        @id, @name, @email, @role, @companyId, @linkedinUrl, @relationshipScore, @lastContactAt,
+        @tags, @createdAt, @updatedAt
+      )`,
+    );
+    for (const person of people) {
+      peopleStatement.run(person);
+    }
+
+    const meetingStatement = db.prepare(
+      `INSERT INTO meetings (
+        id, dealId, date, attendees, meetingType, rawNotes, structuredNotes, createdAt
+      ) VALUES (
+        @id, @dealId, @date, @attendees, @meetingType, @rawNotes, @structuredNotes, @createdAt
+      )`,
+    );
+    for (const meeting of meetings) {
+      meetingStatement.run(meeting);
+    }
+
+    const memoStatement = db.prepare(
+      `INSERT INTO memos (
+        id, dealId, memoType, title, content, status, author, createdAt, updatedAt
+      ) VALUES (
+        @id, @dealId, @memoType, @title, @content, @status, @author, @createdAt, @updatedAt
+      )`,
+    );
+    for (const memo of memos) {
+      memoStatement.run(memo);
+    }
+
+    const taskStatement = db.prepare(
+      `INSERT INTO tasks (
+        id, dealId, assignee, title, description, status, dueDate, createdAt, completedAt
+      ) VALUES (
+        @id, @dealId, @assignee, @title, @description, @status, @dueDate, @createdAt, @completedAt
+      )`,
+    );
+    for (const task of tasks) {
+      taskStatement.run(task);
+    }
+  });
+
+  insert();
+}
