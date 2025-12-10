@@ -389,3 +389,68 @@ Add CSS transitions to all interactive elements in `shell.css` and component fil
 Current Framer Motion usage is decent but over-animated in places.
 
 Changes:
+- Remove `whileHover={{ scale: 1.02 }}` from feature cards — scale transforms on cards feel cheap. Use border-color or background transition.
+- Remove `whileHover={{ scale: 1.03 }}` from buttons — scale on buttons is 2023. Use opacity or subtle brightness.
+- Keep scroll-triggered staggered reveals — they work well. But tighten delays: change stagger from 0.08 to 0.06, total reveal faster.
+- Hero text parallax: keep, but reduce the Y offset from -200 to -100. Less dramatic, more subtle.
+- `prefers-reduced-motion`: already handled in globals.css — good.
+
+### 5.3 Focus & Keyboard States
+
+- All interactive elements: add `focus-visible:ring-1 focus-visible:ring-accent/30 focus-visible:ring-offset-1 focus-visible:ring-offset-background`
+- Tab navigation: visible focus ring on tab buttons
+- Command palette: ensure `aria-selected` styles are visible and match hover styles
+- Sidebar items: add focus-visible outline
+
+### 5.4 Loading & Empty States
+
+- Loading states: replace "Loading deal workspace..." text with a subtle skeleton pulse. Three lines: `h-4 w-48 bg-muted animate-pulse rounded`, `h-3 w-32 bg-muted/50 animate-pulse rounded`, etc.
+- Empty states: add a fade-in entrance animation (150ms)
+- Error states in `ErrorBoundary.tsx`: audit and ensure consistent styling
+
+### 5.5 Hover State Audit
+
+Audit every interactive element and ensure:
+- Buttons: `hover:bg-muted` or `hover:text-foreground` — never both simultaneously
+- Table rows: `hover:bg-muted/50` — very subtle
+- Links: `hover:text-foreground` from `text-muted-foreground`
+- Cards (landing page): `hover:border-white/15` — border brightens, nothing else
+- Sidebar items: `hover:bg-muted hover:text-foreground`
+
+### 5.6 Scrollbar Polish
+
+Desktop `index.css` scrollbar styles:
+```css
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: transparent; border-radius: 3px; }
+*:hover > ::-webkit-scrollbar-thumb { background: oklch(1 0 0 / 0.08); }
+::-webkit-scrollbar-thumb:hover { background: oklch(1 0 0 / 0.15); }
+```
+Scrollbar thumbs invisible until the container is hovered. Cursor does this.
+
+### 5.7 Selection & Text Styles
+
+- Add `::selection { background: var(--accent)/20; }` — branded selection color
+- Code/mono text: add `bg-muted/50 px-1 py-0.5 rounded text-[0.9em]` for inline code/kbd elements
+- The `<kbd>` in TabArea empty state: standardize as a component or utility class
+
+---
+
+## Execution Notes
+
+- **Each phase is independent**. Phase 1 outputs are CSS custom properties and font decisions that the other 4 phases consume, but you can start all 5 simultaneously — phases 2-5 just reference the token names, which are defined in Phase 1 and won't change shape.
+- **Phase 1 should land first** in git (other phases branch off after), but development can be parallel.
+- **No new dependencies required**. Everything uses existing Tailwind v4 + shadcn/ui + Framer Motion.
+- **Test after each phase**: `pnpm dev` in the monorepo root, verify desktop app via `tauri dev`, verify landing page at `localhost:3000`.
+- **shadcn components** already installed: badge, button, dialog, dropdown-menu, input, popover, scroll-area, separator, tabs, tooltip. Use these instead of custom CSS classes where possible.
+
+### File Impact Summary
+
+| Phase | Files Modified | New Files |
+|-------|---------------|-----------|
+| 1 | `index.css`, `globals.css`, `layout.tsx` | 0 |
+| 2 | `shell.css`, `Sidebar.tsx`, `SidebarSection.tsx`, `TabArea.tsx`, `BottomPanel.tsx`, `StatusBar.tsx`, `MainLayout.tsx`, `CommandPalette.tsx`, `CommandItem.tsx` | 0 |
+| 3 | `PipelineView.tsx`, `DealWorkspace.tsx`, `CompanyCard.tsx`, `DealOverview.tsx`, `DealNotes.tsx`, `DealTimeline.tsx`, `PersonView.tsx`, `MeetingNotes.tsx`, `ThesisEditor.tsx`, `SettingsView.tsx`, `EmptyState.tsx`, `StageBadge.tsx`, `ConfidenceBadge.tsx`, `StageColumn.tsx`, `DealCard.tsx`, `PersonCard.tsx`, `MeetingForm.tsx`, `TaskForm.tsx`, `TaskItem.tsx`, `ThesisForm.tsx` | 0 |
+| 4 | `Hero.tsx`, `Features.tsx`, `HowItWorks.tsx`, `Differentiators.tsx`, `CTA.tsx`, `Testimonial.tsx`, `Navbar.tsx`, `WordReveal.tsx`, `globals.css` | 0 |
+| 5 | `shell.css`, `index.css`, `globals.css`, various component files for focus/hover states | 0 |
