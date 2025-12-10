@@ -465,3 +465,80 @@
           "markdownDescription": "Enables the set_app_theme command without any pre-configured scope."
         },
         {
+          "description": "Enables the set_dock_visibility command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:allow-set-dock-visibility",
+          "markdownDescription": "Enables the set_dock_visibility command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the tauri_version command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:allow-tauri-version",
+          "markdownDescription": "Enables the tauri_version command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the version command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:allow-version",
+          "markdownDescription": "Enables the version command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the app_hide command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-app-hide",
+          "markdownDescription": "Denies the app_hide command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the app_show command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-app-show",
+          "markdownDescription": "Denies the app_show command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the bundle_type command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-bundle-type",
+          "markdownDescription": "Denies the bundle_type command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the default_window_icon command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-default-window-icon",
+          "markdownDescription": "Denies the default_window_icon command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the fetch_data_store_identifiers command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-fetch-data-store-identifiers",
+          "markdownDescription": "Denies the fetch_data_store_identifiers command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the identifier command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-identifier",
+          "markdownDescription": "Denies the identifier command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the name command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-name",
+          "markdownDescription": "Denies the name command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the register_listener command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-register-listener",
+          "markdownDescription": "Denies the register_listener command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the remove_data_store command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-remove-data-store",
+          "markdownDescription": "Denies the remove_data_store command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the remove_listener command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:app:deny-remove-listener",
+          "markdownDescription": "Denies the remove_listener command without any pre-configured scope."
+        },
