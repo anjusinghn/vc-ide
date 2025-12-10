@@ -470,3 +470,70 @@
   border-radius: 4px;
   color: var(--muted-foreground);
   cursor: pointer;
+  line-height: 1.4;
+  transition: color 150ms, background 150ms;
+}
+
+.small-action:hover,
+.small-action.active {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+.list-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  transition: background 150ms;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.stat-card {
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  transition: border-color 150ms;
+}
+
+.badge {
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+}
+
+.data-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  transition: border-color 150ms;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
