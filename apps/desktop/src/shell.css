@@ -537,3 +537,70 @@
   font-size: 12px;
 }
 
+.table th {
+  padding: 7px 10px;
+  text-align: left;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  border-bottom: 1px solid var(--border);
+}
+
+.table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.table tr {
+  transition: background 150ms;
+}
+
+.table tr:hover td {
+  background: oklch(1 0 0 / 0.02);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.toolbar-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.select {
+  height: 26px;
+  padding: 0 6px;
+  font-size: 12px;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--foreground);
+}
+
+.kanban-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.list-item:hover {
+  background: oklch(1 0 0 / 0.02);
+}
+
+.sidebar-item:focus-visible,
+.sidebar-section-header:focus-visible,
+.tab-button:focus-visible,
+.tab-close:focus-visible,
+.small-action:focus-visible,
+.command-item:focus-visible,
+.list-item:focus-visible,
+[cmdk-item]:focus-visible {
+  outline: 1px solid color-mix(in oklch, var(--accent), transparent 70%);
+  outline-offset: -1px;
+}
