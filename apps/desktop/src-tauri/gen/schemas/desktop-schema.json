@@ -775,3 +775,81 @@
           "type": "string",
           "const": "core:menu:allow-set-as-app-menu",
           "markdownDescription": "Enables the set_as_app_menu command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_as_help_menu_for_nsapp command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:allow-set-as-help-menu-for-nsapp",
+          "markdownDescription": "Enables the set_as_help_menu_for_nsapp command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_as_window_menu command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:allow-set-as-window-menu",
+          "markdownDescription": "Enables the set_as_window_menu command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_as_windows_menu_for_nsapp command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:allow-set-as-windows-menu-for-nsapp",
+          "markdownDescription": "Enables the set_as_windows_menu_for_nsapp command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_checked command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:allow-set-checked",
+          "markdownDescription": "Enables the set_checked command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_enabled command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:allow-set-enabled",
+          "markdownDescription": "Enables the set_enabled command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_icon command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:allow-set-icon",
+          "markdownDescription": "Enables the set_icon command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_text command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:allow-set-text",
+          "markdownDescription": "Enables the set_text command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the text command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:allow-text",
+          "markdownDescription": "Enables the text command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the append command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-append",
+          "markdownDescription": "Denies the append command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the create_default command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-create-default",
+          "markdownDescription": "Denies the create_default command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-get",
+          "markdownDescription": "Denies the get command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the insert command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-insert",
+          "markdownDescription": "Denies the insert command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_checked command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-is-checked",
+          "markdownDescription": "Denies the is_checked command without any pre-configured scope."
