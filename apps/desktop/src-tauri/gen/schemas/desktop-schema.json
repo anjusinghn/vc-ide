@@ -620,3 +620,81 @@
           "const": "core:event:deny-unlisten",
           "markdownDescription": "Denies the unlisten command without any pre-configured scope."
         },
+        {
+          "description": "Default permissions for the plugin, which enables all commands.\n#### This default permission set includes:\n\n- `allow-new`\n- `allow-from-bytes`\n- `allow-from-path`\n- `allow-rgba`\n- `allow-size`",
+          "type": "string",
+          "const": "core:image:default",
+          "markdownDescription": "Default permissions for the plugin, which enables all commands.\n#### This default permission set includes:\n\n- `allow-new`\n- `allow-from-bytes`\n- `allow-from-path`\n- `allow-rgba`\n- `allow-size`"
+        },
+        {
+          "description": "Enables the from_bytes command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:allow-from-bytes",
+          "markdownDescription": "Enables the from_bytes command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the from_path command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:allow-from-path",
+          "markdownDescription": "Enables the from_path command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the new command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:allow-new",
+          "markdownDescription": "Enables the new command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the rgba command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:allow-rgba",
+          "markdownDescription": "Enables the rgba command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:allow-size",
+          "markdownDescription": "Enables the size command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the from_bytes command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:deny-from-bytes",
+          "markdownDescription": "Denies the from_bytes command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the from_path command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:deny-from-path",
+          "markdownDescription": "Denies the from_path command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the new command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:deny-new",
+          "markdownDescription": "Denies the new command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the rgba command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:deny-rgba",
+          "markdownDescription": "Denies the rgba command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:image:deny-size",
+          "markdownDescription": "Denies the size command without any pre-configured scope."
+        },
+        {
+          "description": "Default permissions for the plugin, which enables all commands.\n#### This default permission set includes:\n\n- `allow-new`\n- `allow-append`\n- `allow-prepend`\n- `allow-insert`\n- `allow-remove`\n- `allow-remove-at`\n- `allow-items`\n- `allow-get`\n- `allow-popup`\n- `allow-create-default`\n- `allow-set-as-app-menu`\n- `allow-set-as-window-menu`\n- `allow-text`\n- `allow-set-text`\n- `allow-is-enabled`\n- `allow-set-enabled`\n- `allow-set-accelerator`\n- `allow-set-as-windows-menu-for-nsapp`\n- `allow-set-as-help-menu-for-nsapp`\n- `allow-is-checked`\n- `allow-set-checked`\n- `allow-set-icon`",
+          "type": "string",
+          "const": "core:menu:default",
+          "markdownDescription": "Default permissions for the plugin, which enables all commands.\n#### This default permission set includes:\n\n- `allow-new`\n- `allow-append`\n- `allow-prepend`\n- `allow-insert`\n- `allow-remove`\n- `allow-remove-at`\n- `allow-items`\n- `allow-get`\n- `allow-popup`\n- `allow-create-default`\n- `allow-set-as-app-menu`\n- `allow-set-as-window-menu`\n- `allow-text`\n- `allow-set-text`\n- `allow-is-enabled`\n- `allow-set-enabled`\n- `allow-set-accelerator`\n- `allow-set-as-windows-menu-for-nsapp`\n- `allow-set-as-help-menu-for-nsapp`\n- `allow-is-checked`\n- `allow-set-checked`\n- `allow-set-icon`"
+        },
+        {
+          "description": "Enables the append command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:allow-append",
+          "markdownDescription": "Enables the append command without any pre-configured scope."
+        },
