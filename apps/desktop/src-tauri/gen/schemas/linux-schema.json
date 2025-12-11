@@ -853,3 +853,81 @@
           "type": "string",
           "const": "core:menu:deny-is-checked",
           "markdownDescription": "Denies the is_checked command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_enabled command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-is-enabled",
+          "markdownDescription": "Denies the is_enabled command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the items command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-items",
+          "markdownDescription": "Denies the items command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the new command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-new",
+          "markdownDescription": "Denies the new command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the popup command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-popup",
+          "markdownDescription": "Denies the popup command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the prepend command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-prepend",
+          "markdownDescription": "Denies the prepend command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the remove command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-remove",
+          "markdownDescription": "Denies the remove command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the remove_at command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-remove-at",
+          "markdownDescription": "Denies the remove_at command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_accelerator command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-set-accelerator",
+          "markdownDescription": "Denies the set_accelerator command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_as_app_menu command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-set-as-app-menu",
+          "markdownDescription": "Denies the set_as_app_menu command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_as_help_menu_for_nsapp command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-set-as-help-menu-for-nsapp",
+          "markdownDescription": "Denies the set_as_help_menu_for_nsapp command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_as_window_menu command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-set-as-window-menu",
+          "markdownDescription": "Denies the set_as_window_menu command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_as_windows_menu_for_nsapp command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-set-as-windows-menu-for-nsapp",
+          "markdownDescription": "Denies the set_as_windows_menu_for_nsapp command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_checked command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-set-checked",
+          "markdownDescription": "Denies the set_checked command without any pre-configured scope."
