@@ -931,3 +931,81 @@
           "type": "string",
           "const": "core:menu:deny-set-checked",
           "markdownDescription": "Denies the set_checked command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_enabled command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-set-enabled",
+          "markdownDescription": "Denies the set_enabled command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_icon command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-set-icon",
+          "markdownDescription": "Denies the set_icon command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_text command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-set-text",
+          "markdownDescription": "Denies the set_text command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the text command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:menu:deny-text",
+          "markdownDescription": "Denies the text command without any pre-configured scope."
+        },
+        {
+          "description": "Default permissions for the plugin, which enables all commands.\n#### This default permission set includes:\n\n- `allow-resolve-directory`\n- `allow-resolve`\n- `allow-normalize`\n- `allow-join`\n- `allow-dirname`\n- `allow-extname`\n- `allow-basename`\n- `allow-is-absolute`",
+          "type": "string",
+          "const": "core:path:default",
+          "markdownDescription": "Default permissions for the plugin, which enables all commands.\n#### This default permission set includes:\n\n- `allow-resolve-directory`\n- `allow-resolve`\n- `allow-normalize`\n- `allow-join`\n- `allow-dirname`\n- `allow-extname`\n- `allow-basename`\n- `allow-is-absolute`"
+        },
+        {
+          "description": "Enables the basename command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:path:allow-basename",
+          "markdownDescription": "Enables the basename command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the dirname command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:path:allow-dirname",
+          "markdownDescription": "Enables the dirname command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the extname command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:path:allow-extname",
+          "markdownDescription": "Enables the extname command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_absolute command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:path:allow-is-absolute",
+          "markdownDescription": "Enables the is_absolute command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the join command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:path:allow-join",
+          "markdownDescription": "Enables the join command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the normalize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:path:allow-normalize",
+          "markdownDescription": "Enables the normalize command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the resolve command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:path:allow-resolve",
+          "markdownDescription": "Enables the resolve command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the resolve_directory command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:path:allow-resolve-directory",
+          "markdownDescription": "Enables the resolve_directory command without any pre-configured scope."
