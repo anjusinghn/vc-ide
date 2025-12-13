@@ -1475,3 +1475,80 @@
         {
           "description": "Enables the cursor_position command without any pre-configured scope.",
           "type": "string",
+          "const": "core:window:allow-cursor-position",
+          "markdownDescription": "Enables the cursor_position command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the destroy command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-destroy",
+          "markdownDescription": "Enables the destroy command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the get_all_windows command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-get-all-windows",
+          "markdownDescription": "Enables the get_all_windows command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the hide command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-hide",
+          "markdownDescription": "Enables the hide command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the inner_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-inner-position",
+          "markdownDescription": "Enables the inner_position command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the inner_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-inner-size",
+          "markdownDescription": "Enables the inner_size command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the internal_toggle_maximize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-internal-toggle-maximize",
+          "markdownDescription": "Enables the internal_toggle_maximize command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_always_on_top command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-always-on-top",
+          "markdownDescription": "Enables the is_always_on_top command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_closable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-closable",
+          "markdownDescription": "Enables the is_closable command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_decorated command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-decorated",
+          "markdownDescription": "Enables the is_decorated command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_enabled command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-enabled",
+          "markdownDescription": "Enables the is_enabled command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_focused command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-focused",
+          "markdownDescription": "Enables the is_focused command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_fullscreen command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-fullscreen",
+          "markdownDescription": "Enables the is_fullscreen command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_maximizable command without any pre-configured scope.",
