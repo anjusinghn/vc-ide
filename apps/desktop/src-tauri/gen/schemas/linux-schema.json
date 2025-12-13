@@ -1164,3 +1164,81 @@
           "description": "Denies the remove_by_id command without any pre-configured scope.",
           "type": "string",
           "const": "core:tray:deny-remove-by-id",
+          "markdownDescription": "Denies the remove_by_id command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_icon command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:tray:deny-set-icon",
+          "markdownDescription": "Denies the set_icon command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_icon_as_template command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:tray:deny-set-icon-as-template",
+          "markdownDescription": "Denies the set_icon_as_template command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_menu command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:tray:deny-set-menu",
+          "markdownDescription": "Denies the set_menu command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_show_menu_on_left_click command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:tray:deny-set-show-menu-on-left-click",
+          "markdownDescription": "Denies the set_show_menu_on_left_click command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_temp_dir_path command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:tray:deny-set-temp-dir-path",
+          "markdownDescription": "Denies the set_temp_dir_path command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_title command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:tray:deny-set-title",
+          "markdownDescription": "Denies the set_title command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_tooltip command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:tray:deny-set-tooltip",
+          "markdownDescription": "Denies the set_tooltip command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_visible command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:tray:deny-set-visible",
+          "markdownDescription": "Denies the set_visible command without any pre-configured scope."
+        },
+        {
+          "description": "Default permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-get-all-webviews`\n- `allow-webview-position`\n- `allow-webview-size`\n- `allow-internal-toggle-devtools`",
+          "type": "string",
+          "const": "core:webview:default",
+          "markdownDescription": "Default permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-get-all-webviews`\n- `allow-webview-position`\n- `allow-webview-size`\n- `allow-internal-toggle-devtools`"
+        },
+        {
+          "description": "Enables the clear_all_browsing_data command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-clear-all-browsing-data",
+          "markdownDescription": "Enables the clear_all_browsing_data command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the create_webview command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-create-webview",
+          "markdownDescription": "Enables the create_webview command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the create_webview_window command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-create-webview-window",
+          "markdownDescription": "Enables the create_webview_window command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the get_all_webviews command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-get-all-webviews",
