@@ -1319,3 +1319,81 @@
         {
           "description": "Enables the webview_show command without any pre-configured scope.",
           "type": "string",
+          "const": "core:webview:allow-webview-show",
+          "markdownDescription": "Enables the webview_show command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the webview_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-webview-size",
+          "markdownDescription": "Enables the webview_size command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the clear_all_browsing_data command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-clear-all-browsing-data",
+          "markdownDescription": "Denies the clear_all_browsing_data command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the create_webview command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-create-webview",
+          "markdownDescription": "Denies the create_webview command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the create_webview_window command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-create-webview-window",
+          "markdownDescription": "Denies the create_webview_window command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get_all_webviews command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-get-all-webviews",
+          "markdownDescription": "Denies the get_all_webviews command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the internal_toggle_devtools command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-internal-toggle-devtools",
+          "markdownDescription": "Denies the internal_toggle_devtools command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the print command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-print",
+          "markdownDescription": "Denies the print command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the reparent command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-reparent",
+          "markdownDescription": "Denies the reparent command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_webview_auto_resize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-set-webview-auto-resize",
+          "markdownDescription": "Denies the set_webview_auto_resize command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_webview_background_color command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-set-webview-background-color",
+          "markdownDescription": "Denies the set_webview_background_color command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_webview_focus command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-set-webview-focus",
+          "markdownDescription": "Denies the set_webview_focus command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_webview_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-set-webview-position",
+          "markdownDescription": "Denies the set_webview_position command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_webview_size command without any pre-configured scope.",
+          "type": "string",
