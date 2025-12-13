@@ -1397,3 +1397,81 @@
         {
           "description": "Denies the set_webview_size command without any pre-configured scope.",
           "type": "string",
+          "const": "core:webview:deny-set-webview-size",
+          "markdownDescription": "Denies the set_webview_size command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_webview_zoom command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-set-webview-zoom",
+          "markdownDescription": "Denies the set_webview_zoom command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the webview_close command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-webview-close",
+          "markdownDescription": "Denies the webview_close command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the webview_hide command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-webview-hide",
+          "markdownDescription": "Denies the webview_hide command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the webview_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-webview-position",
+          "markdownDescription": "Denies the webview_position command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the webview_show command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-webview-show",
+          "markdownDescription": "Denies the webview_show command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the webview_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:deny-webview-size",
+          "markdownDescription": "Denies the webview_size command without any pre-configured scope."
+        },
+        {
+          "description": "Default permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-get-all-windows`\n- `allow-scale-factor`\n- `allow-inner-position`\n- `allow-outer-position`\n- `allow-inner-size`\n- `allow-outer-size`\n- `allow-is-fullscreen`\n- `allow-is-minimized`\n- `allow-is-maximized`\n- `allow-is-focused`\n- `allow-is-decorated`\n- `allow-is-resizable`\n- `allow-is-maximizable`\n- `allow-is-minimizable`\n- `allow-is-closable`\n- `allow-is-visible`\n- `allow-is-enabled`\n- `allow-title`\n- `allow-current-monitor`\n- `allow-primary-monitor`\n- `allow-monitor-from-point`\n- `allow-available-monitors`\n- `allow-cursor-position`\n- `allow-theme`\n- `allow-is-always-on-top`\n- `allow-internal-toggle-maximize`",
+          "type": "string",
+          "const": "core:window:default",
+          "markdownDescription": "Default permissions for the plugin.\n#### This default permission set includes:\n\n- `allow-get-all-windows`\n- `allow-scale-factor`\n- `allow-inner-position`\n- `allow-outer-position`\n- `allow-inner-size`\n- `allow-outer-size`\n- `allow-is-fullscreen`\n- `allow-is-minimized`\n- `allow-is-maximized`\n- `allow-is-focused`\n- `allow-is-decorated`\n- `allow-is-resizable`\n- `allow-is-maximizable`\n- `allow-is-minimizable`\n- `allow-is-closable`\n- `allow-is-visible`\n- `allow-is-enabled`\n- `allow-title`\n- `allow-current-monitor`\n- `allow-primary-monitor`\n- `allow-monitor-from-point`\n- `allow-available-monitors`\n- `allow-cursor-position`\n- `allow-theme`\n- `allow-is-always-on-top`\n- `allow-internal-toggle-maximize`"
+        },
+        {
+          "description": "Enables the available_monitors command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-available-monitors",
+          "markdownDescription": "Enables the available_monitors command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the center command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-center",
+          "markdownDescription": "Enables the center command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the close command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-close",
+          "markdownDescription": "Enables the close command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the create command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-create",
+          "markdownDescription": "Enables the create command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the current_monitor command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-current-monitor",
+          "markdownDescription": "Enables the current_monitor command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the cursor_position command without any pre-configured scope.",
+          "type": "string",
