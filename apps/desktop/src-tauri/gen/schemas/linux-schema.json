@@ -1242,3 +1242,80 @@
           "description": "Enables the get_all_webviews command without any pre-configured scope.",
           "type": "string",
           "const": "core:webview:allow-get-all-webviews",
+          "markdownDescription": "Enables the get_all_webviews command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the internal_toggle_devtools command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-internal-toggle-devtools",
+          "markdownDescription": "Enables the internal_toggle_devtools command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the print command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-print",
+          "markdownDescription": "Enables the print command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the reparent command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-reparent",
+          "markdownDescription": "Enables the reparent command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_webview_auto_resize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-set-webview-auto-resize",
+          "markdownDescription": "Enables the set_webview_auto_resize command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_webview_background_color command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-set-webview-background-color",
+          "markdownDescription": "Enables the set_webview_background_color command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_webview_focus command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-set-webview-focus",
+          "markdownDescription": "Enables the set_webview_focus command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_webview_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-set-webview-position",
+          "markdownDescription": "Enables the set_webview_position command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_webview_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-set-webview-size",
+          "markdownDescription": "Enables the set_webview_size command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_webview_zoom command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-set-webview-zoom",
+          "markdownDescription": "Enables the set_webview_zoom command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the webview_close command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-webview-close",
+          "markdownDescription": "Enables the webview_close command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the webview_hide command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-webview-hide",
+          "markdownDescription": "Enables the webview_hide command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the webview_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:webview:allow-webview-position",
+          "markdownDescription": "Enables the webview_position command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the webview_show command without any pre-configured scope.",
+          "type": "string",
