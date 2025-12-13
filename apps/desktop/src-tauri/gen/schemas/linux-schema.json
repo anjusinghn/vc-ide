@@ -1552,3 +1552,81 @@
         },
         {
           "description": "Enables the is_maximizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-maximizable",
+          "markdownDescription": "Enables the is_maximizable command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_maximized command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-maximized",
+          "markdownDescription": "Enables the is_maximized command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_minimizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-minimizable",
+          "markdownDescription": "Enables the is_minimizable command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_minimized command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-minimized",
+          "markdownDescription": "Enables the is_minimized command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_resizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-resizable",
+          "markdownDescription": "Enables the is_resizable command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the is_visible command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-is-visible",
+          "markdownDescription": "Enables the is_visible command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the maximize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-maximize",
+          "markdownDescription": "Enables the maximize command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the minimize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-minimize",
+          "markdownDescription": "Enables the minimize command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the monitor_from_point command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-monitor-from-point",
+          "markdownDescription": "Enables the monitor_from_point command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the outer_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-outer-position",
+          "markdownDescription": "Enables the outer_position command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the outer_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-outer-size",
+          "markdownDescription": "Enables the outer_size command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the primary_monitor command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-primary-monitor",
+          "markdownDescription": "Enables the primary_monitor command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the request_user_attention command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-request-user-attention",
+          "markdownDescription": "Enables the request_user_attention command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the scale_factor command without any pre-configured scope.",
