@@ -1708,3 +1708,81 @@
         },
         {
           "description": "Enables the set_effects command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-effects",
+          "markdownDescription": "Enables the set_effects command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_enabled command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-enabled",
+          "markdownDescription": "Enables the set_enabled command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_focus command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-focus",
+          "markdownDescription": "Enables the set_focus command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_focusable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-focusable",
+          "markdownDescription": "Enables the set_focusable command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_fullscreen command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-fullscreen",
+          "markdownDescription": "Enables the set_fullscreen command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_icon command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-icon",
+          "markdownDescription": "Enables the set_icon command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_ignore_cursor_events command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-ignore-cursor-events",
+          "markdownDescription": "Enables the set_ignore_cursor_events command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_max_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-max-size",
+          "markdownDescription": "Enables the set_max_size command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_maximizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-maximizable",
+          "markdownDescription": "Enables the set_maximizable command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_min_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-min-size",
+          "markdownDescription": "Enables the set_min_size command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_minimizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-minimizable",
+          "markdownDescription": "Enables the set_minimizable command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_overlay_icon command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-overlay-icon",
+          "markdownDescription": "Enables the set_overlay_icon command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-position",
+          "markdownDescription": "Enables the set_position command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_progress_bar command without any pre-configured scope.",
