@@ -2019,3 +2019,80 @@
           "markdownDescription": "Denies the is_maximized command without any pre-configured scope."
         },
         {
+          "description": "Denies the is_minimizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-minimizable",
+          "markdownDescription": "Denies the is_minimizable command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_minimized command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-minimized",
+          "markdownDescription": "Denies the is_minimized command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_resizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-resizable",
+          "markdownDescription": "Denies the is_resizable command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_visible command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-visible",
+          "markdownDescription": "Denies the is_visible command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the maximize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-maximize",
+          "markdownDescription": "Denies the maximize command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the minimize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-minimize",
+          "markdownDescription": "Denies the minimize command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the monitor_from_point command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-monitor-from-point",
+          "markdownDescription": "Denies the monitor_from_point command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the outer_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-outer-position",
+          "markdownDescription": "Denies the outer_position command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the outer_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-outer-size",
+          "markdownDescription": "Denies the outer_size command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the primary_monitor command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-primary-monitor",
+          "markdownDescription": "Denies the primary_monitor command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the request_user_attention command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-request-user-attention",
+          "markdownDescription": "Denies the request_user_attention command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the scale_factor command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-scale-factor",
+          "markdownDescription": "Denies the scale_factor command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_always_on_bottom command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-always-on-bottom",
+          "markdownDescription": "Denies the set_always_on_bottom command without any pre-configured scope."
+        },

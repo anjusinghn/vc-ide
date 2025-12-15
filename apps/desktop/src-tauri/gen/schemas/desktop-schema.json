@@ -1941,3 +1941,81 @@
           "markdownDescription": "Denies the destroy command without any pre-configured scope."
         },
         {
+          "description": "Denies the get_all_windows command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-get-all-windows",
+          "markdownDescription": "Denies the get_all_windows command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the hide command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-hide",
+          "markdownDescription": "Denies the hide command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the inner_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-inner-position",
+          "markdownDescription": "Denies the inner_position command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the inner_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-inner-size",
+          "markdownDescription": "Denies the inner_size command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the internal_toggle_maximize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-internal-toggle-maximize",
+          "markdownDescription": "Denies the internal_toggle_maximize command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_always_on_top command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-always-on-top",
+          "markdownDescription": "Denies the is_always_on_top command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_closable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-closable",
+          "markdownDescription": "Denies the is_closable command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_decorated command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-decorated",
+          "markdownDescription": "Denies the is_decorated command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_enabled command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-enabled",
+          "markdownDescription": "Denies the is_enabled command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_focused command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-focused",
+          "markdownDescription": "Denies the is_focused command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_fullscreen command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-fullscreen",
+          "markdownDescription": "Denies the is_fullscreen command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_maximizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-maximizable",
+          "markdownDescription": "Denies the is_maximizable command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the is_maximized command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-is-maximized",
+          "markdownDescription": "Denies the is_maximized command without any pre-configured scope."
+        },
+        {
