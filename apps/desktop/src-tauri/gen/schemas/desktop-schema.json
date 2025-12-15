@@ -1786,3 +1786,80 @@
         },
         {
           "description": "Enables the set_progress_bar command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-progress-bar",
+          "markdownDescription": "Enables the set_progress_bar command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_resizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-resizable",
+          "markdownDescription": "Enables the set_resizable command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_shadow command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-shadow",
+          "markdownDescription": "Enables the set_shadow command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_simple_fullscreen command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-simple-fullscreen",
+          "markdownDescription": "Enables the set_simple_fullscreen command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-size",
+          "markdownDescription": "Enables the set_size command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_size_constraints command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-size-constraints",
+          "markdownDescription": "Enables the set_size_constraints command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_skip_taskbar command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-skip-taskbar",
+          "markdownDescription": "Enables the set_skip_taskbar command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_theme command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-theme",
+          "markdownDescription": "Enables the set_theme command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_title command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-title",
+          "markdownDescription": "Enables the set_title command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_title_bar_style command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-title-bar-style",
+          "markdownDescription": "Enables the set_title_bar_style command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the set_visible_on_all_workspaces command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-set-visible-on-all-workspaces",
+          "markdownDescription": "Enables the set_visible_on_all_workspaces command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the show command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-show",
+          "markdownDescription": "Enables the show command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the start_dragging command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-start-dragging",
+          "markdownDescription": "Enables the start_dragging command without any pre-configured scope."
+        },
+        {
