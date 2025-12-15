@@ -1863,3 +1863,81 @@
           "markdownDescription": "Enables the start_dragging command without any pre-configured scope."
         },
         {
+          "description": "Enables the start_resize_dragging command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-start-resize-dragging",
+          "markdownDescription": "Enables the start_resize_dragging command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the theme command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-theme",
+          "markdownDescription": "Enables the theme command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the title command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-title",
+          "markdownDescription": "Enables the title command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the toggle_maximize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-toggle-maximize",
+          "markdownDescription": "Enables the toggle_maximize command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the unmaximize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-unmaximize",
+          "markdownDescription": "Enables the unmaximize command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the unminimize command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:allow-unminimize",
+          "markdownDescription": "Enables the unminimize command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the available_monitors command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-available-monitors",
+          "markdownDescription": "Denies the available_monitors command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the center command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-center",
+          "markdownDescription": "Denies the center command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the close command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-close",
+          "markdownDescription": "Denies the close command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the create command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-create",
+          "markdownDescription": "Denies the create command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the current_monitor command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-current-monitor",
+          "markdownDescription": "Denies the current_monitor command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the cursor_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-cursor-position",
+          "markdownDescription": "Denies the cursor_position command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the destroy command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-destroy",
+          "markdownDescription": "Denies the destroy command without any pre-configured scope."
+        },
+        {
