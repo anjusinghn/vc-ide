@@ -2096,3 +2096,81 @@
           "const": "core:window:deny-set-always-on-bottom",
           "markdownDescription": "Denies the set_always_on_bottom command without any pre-configured scope."
         },
+        {
+          "description": "Denies the set_always_on_top command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-always-on-top",
+          "markdownDescription": "Denies the set_always_on_top command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_background_color command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-background-color",
+          "markdownDescription": "Denies the set_background_color command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_badge_count command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-badge-count",
+          "markdownDescription": "Denies the set_badge_count command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_badge_label command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-badge-label",
+          "markdownDescription": "Denies the set_badge_label command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_closable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-closable",
+          "markdownDescription": "Denies the set_closable command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_content_protected command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-content-protected",
+          "markdownDescription": "Denies the set_content_protected command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_cursor_grab command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-cursor-grab",
+          "markdownDescription": "Denies the set_cursor_grab command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_cursor_icon command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-cursor-icon",
+          "markdownDescription": "Denies the set_cursor_icon command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_cursor_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-cursor-position",
+          "markdownDescription": "Denies the set_cursor_position command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_cursor_visible command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-cursor-visible",
+          "markdownDescription": "Denies the set_cursor_visible command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_decorations command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-decorations",
+          "markdownDescription": "Denies the set_decorations command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_effects command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-effects",
+          "markdownDescription": "Denies the set_effects command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_enabled command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-enabled",
+          "markdownDescription": "Denies the set_enabled command without any pre-configured scope."
+        },
