@@ -2252,3 +2252,80 @@
           "const": "core:window:deny-set-resizable",
           "markdownDescription": "Denies the set_resizable command without any pre-configured scope."
         },
+        {
+          "description": "Denies the set_shadow command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-shadow",
+          "markdownDescription": "Denies the set_shadow command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_simple_fullscreen command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-simple-fullscreen",
+          "markdownDescription": "Denies the set_simple_fullscreen command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-size",
+          "markdownDescription": "Denies the set_size command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_size_constraints command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-size-constraints",
+          "markdownDescription": "Denies the set_size_constraints command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_skip_taskbar command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-skip-taskbar",
+          "markdownDescription": "Denies the set_skip_taskbar command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_theme command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-theme",
+          "markdownDescription": "Denies the set_theme command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_title command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-title",
+          "markdownDescription": "Denies the set_title command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_title_bar_style command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-title-bar-style",
+          "markdownDescription": "Denies the set_title_bar_style command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_visible_on_all_workspaces command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-visible-on-all-workspaces",
+          "markdownDescription": "Denies the set_visible_on_all_workspaces command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the show command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-show",
+          "markdownDescription": "Denies the show command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the start_dragging command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-start-dragging",
+          "markdownDescription": "Denies the start_dragging command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the start_resize_dragging command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-start-resize-dragging",
+          "markdownDescription": "Denies the start_resize_dragging command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the theme command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-theme",
+          "markdownDescription": "Denies the theme command without any pre-configured scope."
