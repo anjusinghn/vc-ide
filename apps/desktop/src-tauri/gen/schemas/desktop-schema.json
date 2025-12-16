@@ -2174,3 +2174,81 @@
           "const": "core:window:deny-set-enabled",
           "markdownDescription": "Denies the set_enabled command without any pre-configured scope."
         },
+        {
+          "description": "Denies the set_focus command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-focus",
+          "markdownDescription": "Denies the set_focus command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_focusable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-focusable",
+          "markdownDescription": "Denies the set_focusable command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_fullscreen command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-fullscreen",
+          "markdownDescription": "Denies the set_fullscreen command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_icon command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-icon",
+          "markdownDescription": "Denies the set_icon command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_ignore_cursor_events command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-ignore-cursor-events",
+          "markdownDescription": "Denies the set_ignore_cursor_events command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_max_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-max-size",
+          "markdownDescription": "Denies the set_max_size command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_maximizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-maximizable",
+          "markdownDescription": "Denies the set_maximizable command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_min_size command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-min-size",
+          "markdownDescription": "Denies the set_min_size command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_minimizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-minimizable",
+          "markdownDescription": "Denies the set_minimizable command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_overlay_icon command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-overlay-icon",
+          "markdownDescription": "Denies the set_overlay_icon command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-position",
+          "markdownDescription": "Denies the set_position command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_progress_bar command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-progress-bar",
+          "markdownDescription": "Denies the set_progress_bar command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the set_resizable command without any pre-configured scope.",
+          "type": "string",
+          "const": "core:window:deny-set-resizable",
+          "markdownDescription": "Denies the set_resizable command without any pre-configured scope."
+        },
